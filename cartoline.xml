@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE teiCorpus SYSTEM "tei_all.dtd">
+
+<teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Progetto Codifica di Testi 2020-2021: Tre cartoline ad Olivia Turtura</title>
+                <respStmt>
+                    <resp>Trascritto da:</resp>
+                    <name xml:id="MP">Michele Papucci</name>
+                    <name xml:id="SZ">Sofia Zuffi</name>
+                </respStmt>
+                
+                <respStmt>
+                    <resp>Ente di Appartenenza</resp>
+                    <name type="comune" xml:id="CdS">Comune della Spezia</name>
+                </respStmt>
+            </titleStmt>
+            
+            <editionStmt>
+                <edition>Studenti di Codifica di Testi, Corso di Laurea di Informatica Umanistica, Università di Pisa
+                    <date when="2021" xml:id="d_2021">2021</date>
+                </edition>
+                
+                <respStmt>
+                    <resp>Codificato da:</resp>
+                    <name ref="#MP"></name>
+                    <name ref="#SZ"></name>
+                </respStmt>
+                
+                <respStmt>
+                    <resp>Compilatore:</resp>
+                    <name xml:id="TC">Tommaso Castagneto</name>
+                </respStmt>
+
+                <respStmt>
+                    <resp>Responsabile scientifico:</resp>
+                    <name xml:id="GP">Giacomo Paolicchi</name>
+                    <name xml:id="ES">Enrica Salvatori</name>
+                </respStmt>
+                
+                <respStmt>
+                    <resp>Funzionario responsabile:</resp>
+                    <name xml:id="MarziaR">Marzia Ratti</name>
+                </respStmt>
+            </editionStmt>
+            
+            <publicationStmt>
+                <publisher xml:id="UdP">Università di Pisa</publisher>
+                <pubPlace xml:id="PI">Pisa</pubPlace>
+                <availability>
+                    <p xml:id="ULO">Available under licence only</p>
+                </availability>
+                <date ref="#d_2021"></date>
+                <distributor xml:id="LabCD">LabCD</distributor>
+                <address>
+                    <addrLine xml:id="LabCulDig">Laboratorio di Cultura Digitale - Università di Pisa</addrLine>
+                    <addrLine>
+                        <ref target="#PI"></ref>
+                    </addrLine>
+                </address>
+            </publicationStmt>
+              
+            <sourceDesc>
+                <bibl>
+                   Collezioni storiche otto-novecentesche - Donazione Rosanna Borghi: album contenente 227 cartoline
+                </bibl>
+                <msDesc>
+                    <msIdentifier>
+                        <country xml:id="IT">Italia</country>
+                        <settlement xml:id="SP">La Spezia (SP)</settlement>
+                        <repository xml:id="MCE">Museo Civico Etnografico "Giovanni Podenzana", Sezione dei cimeli garibaldini e della Prima Guerra Mondiale</repository>
+                    </msIdentifier>
+                    
+                    <!-- Informazioni sul contenuto della cartolina -->
+                    <!-- DESCRIZIONE -->
+                    <msContents>
+                        <summary xml:id="CArt">Cartolina Artistica</summary>
+                        <textLang mainLang="it-IT" xml:id="it-IT">Italiano</textLang>
+                    </msContents>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    
+    <!-- CARTOLINA 012-->
+    <TEI>
+        <teiHeader>
+            <fileDesc>
+                <titleStmt>
+                    <title>Cartolina 012</title>
+                </titleStmt>
+                
+                <publicationStmt>
+                    <publisher ref="#UdP"></publisher>
+                    <pubPlace ref="#PI"></pubPlace>
+                    <availability>
+                        <p>
+                            <ref target="#ULO"></ref>
+                        </p>
+                    </availability>
+                    <date ref="#d_2021"></date>
+                    <distributor ref="#LabCD"></distributor>
+                    <address>
+                        <addrLine>
+                            <ref target="#LabCulDig"></ref>
+                        </addrLine>
+                        <addrLine>
+                            <ref target="#PI"></ref>
+                        </addrLine>
+                    </address>
+                </publicationStmt>
+                
+                <notesStmt>
+                    <note>Sul retro, sulla sinistra, è presente una riga rossa. Sotto si intravedono le lettere MN&#38;G Milano</note>
+                </notesStmt>
+
+                <sourceDesc>
+                    <bibl>
+                        <title type="desc">[Bambini per mano]</title>
+                        <publisher xml:id="URS">Ufficio Revisione Stampa</publisher>
+                        <pubPlace xml:id="Milano">Milano</pubPlace>
+                    </bibl>
+                    <msDesc>
+                        <msIdentifier>
+                            <country ref="#IT"></country>
+                            <settlement ref="#SP"></settlement>
+                            <repository ref="#MCE"></repository>
+                            <idno>7694/012</idno>
+                        </msIdentifier>
+                        
+                        <!-- Informazioni sul contenuto della cartolina -->
+                        <!-- DESCRIZIONE -->
+                        <msContents>
+                            <summary>
+                                <ref target="#CArt"></ref>
+                            </summary>
+                            <textLang>
+                                <ref target="#it-IT"></ref>
+                            </textLang>
+                        </msContents>
+                        
+                        <physDesc>
+                            <objectDesc>
+                                <supportDesc>
+                                    <support>
+                                        <objectType xml:id="cartolina">Cartolina</objectType>
+                                        <material xml:id="carta">Carta</material>
+                                        <dimensions unit="cm">
+                                            <height>9</height>
+                                            <width>14</width>
+                                        </dimensions>
+                                        <stamp type="postage">francobollo - Regno d'Italia</stamp>
+                                        <stamp type="postmark">timbro - Posta Militare</stamp>
+                                        <stamp type="postmark">timbro - Verificato per Censura</stamp>
+                                    </support>
+                                    <condition>Buono</condition>
+                                </supportDesc>
+                            </objectDesc>
+                        </physDesc>
+                    </msDesc>
+                    
+                    <listPerson>
+                        <person xml:id="MR">
+                            <persName>
+                                <forename>Massimo</forename>
+                                <surname>Rusolini</surname>
+                            </persName>
+                            <sex>M</sex>
+                        </person>
+                        <person xml:id="GC">
+                            <persName>
+                                <forename>Giovanni</forename>
+                                <surname>Coliola</surname>
+                            </persName>
+                            <sex>M</sex>
+                            <occupation n="1">Tenente</occupation>
+                        </person>
+                    </listPerson>
+                    
+                    <listPlace>
+                        <place xml:id="PRG">
+                            <placeName>Purgessimo</placeName>
+                            <settlement type="località">frazione</settlement>
+                            <district type="comune">Cividale del Friuli</district>
+                            <district type="provincia">UD</district>
+                            <district type="regione">Friuli-Venezia Giulia</district>
+                            <country key="N">IT</country>
+                        </place>
+                        
+                        <place xml:id="MO">
+						<placeName>Modena</placeName>
+						<settlement type="località">città</settlement>
+						<district type="comune">Modena</district>
+						<district type="provincia">MO</district>
+                        <district type="regione">Emilia Romagna</district>
+						<country key="N">IT</country>
+					    </place>
+                        
+                        <place xml:id="MI">
+                            <placeName >Milano</placeName>
+                            <settlement type="località">città</settlement>
+                            <district type="comune">Milano</district>
+                            <district type="provincia">MI</district>
+                            <district type="regione">Lombardia</district>
+                            <country key="N">IT</country>
+                        </place>
+                    </listPlace>   
+                </sourceDesc>
+            </fileDesc>
+            
+            <profileDesc>
+                <correspDesc>
+                    <correspAction type="sent">
+                        <persName ref="#MR"/>
+                        <placeName ref="#PRG"></placeName>
+                        <date when="1917-10-04">1917/10/04</date>
+                    </correspAction>
+                    <correspAction type="received">
+                        <persName ref="#GC"></persName>
+                        <placeName ref="#MO"></placeName>
+                    </correspAction>
+                </correspDesc>
+                
+                <textClass>
+                    <keywords>
+                        <!-- soggettario -->
+                        <term>Cartolina</term>
+                        <!-- tipologia -->
+                        <term>Cartolina Artistica</term>
+                        <!-- descrizione -->
+                        <term>Bambini che si tengono per mano</term>
+                    </keywords>
+                </textClass>
+            </profileDesc>
+        </teiHeader>
+        
+        <facsimile xml:id="c012">
+            <surface xml:id="c012f">
+                <graphic url='images/7694-012F.jpg' width='1622px' height='1060px' />
+            </surface>
+            <surface xml:id="c012r">
+                <graphic url='images/7694-012R.jpg' width='1624px' height='1064px' />
+                <zone ulx="96" uly="3" lrx="764" lry="985" xml:id="c012r_messaggio"/>
+                <zone points = ' 1455,157 1577,198 1622,335 1606,468 1462,540 1331,478 1275,358 1325,218 ' xml:id="c012r_timbro"/>
+                <zone points = ' 455,330 490,412 1259,172 1230,85 ' xml:id="c012r_censura"/>
+                <zone ulx="1349" uly="17" lrx="1611" lry="294" xml:id="c012r_francobollo"/>
+                <zone ulx="1371" uly="302" lrx="1613" lry="374" xml:id="c012r_gli"/>
+                <zone ulx="1238" uly="45" lrx="1329" lry="114" xml:id="c012r_no."/>
+                <zone ulx="203" uly="977" lrx="724" lry="1051" xml:id="c012r_vistato"/>
+                <zone ulx="49" uly="627" lrx="106" lry="989" xml:id="c012r_rigaRossa"/>
+            </surface>
+        </facsimile>
+
+        <text type="cartolina">
+            <body>
+                <div facs="#c012f" type="fronte">
+                    <figure>
+                        <graphic url='images/7694-012F.jpg'/>
+                        <figDesc>Quattro bambini vestiti a festa reggono ognuno un mazzo di fiori e si tengono per mano.</figDesc>
+                        <head>[Bambini per mano]</head>
+                    </figure>
+                </div>
+                <div facs="#c012r" type="retro">
+                    <fw type="no.cartolina" place="top-right" facs="#c012r_no.">12</fw>
+                    <div facs="c012r_messaggio" type="message">
+                        <opener>
+                            <dateline>
+                                <placeName ref="#PRG">Purgessimo</placeName>
+                                <date>4-10-<gap reason="illegible"/></date>
+                            </dateline>
+                            <salute>Ricevi <choice>
+                                <sic>Afettuosi</sic>
+                                <corr>affettuosi</corr>
+                            </choice> saluti
+                            </salute>
+                        </opener>
+                        <p></p>
+                        <closer>
+                                <signed>Da 
+                                    <persName ref="#MR">Rusolini Massimo</persName>
+                                </signed>
+                        </closer>                        
+                    </div>
+                    <div type="destination">
+                        <p>
+                            <stamp type="postmark" facs="#c012r_timbro"> 
+                                    <damage>Posta  
+                                        <unclear reason="faded">Militare <date>1<gap reason="faded"/></date>
+                                        </unclear>
+                                    </damage>
+                                <date>
+                                    <gap reason="illegible"/>
+                                </date>
+                            </stamp>
+                            <stamp type="postage" facs="#c012r_francobollo">Francobollo da 10 centesimi del Regno d'Italia
+                                <note facs="#c012r_gli">
+                                    Il francobollo è stato strappato più in basso della linea pretagliata. Rimangono così visibili
+                                    le lettere "GLI", parte della scritta "Il mezzo foglio di 200 francobolli".
+                                </note>
+                            </stamp>
+                            <stamp type="postmark" facs="#c012r_censura">Verificato per censura</stamp>
+                        </p>
+                        <p>
+                            <address>
+                                <addrLine>Tenente</addrLine>
+                                <addrLine><persName ref="#GC">Coliola Giovanni</persName></addrLine>
+                                <addrLine>Via Monti</addrLine>
+                                <addrLine>N.4</addrLine>
+                                <addrLine>
+                                    <placeName ref="#MO">
+                                        <supplied reason="omitted-in-original">Modena?</supplied>
+                                    </placeName>
+                                </addrLine>
+                            </address>
+                        </p>
+                    </div>
+                    <fw type="footer" facs="#c012r_vistato">Vistato dall'Ufficio Revisione Stampa di <placeName ref="#MI">Milano</placeName> N. 1229</fw>
+                </div>
+            </body>
+        </text>
+    </TEI>
+
+    <!-- CARTOLINA 044-->
+    <TEI>
+        <teiHeader>
+            <fileDesc>
+                <titleStmt>
+                    <title>Cartolina 044</title>
+                </titleStmt>
+                
+                <publicationStmt>
+                    <publisher ref="#UdP"></publisher>
+                    <pubPlace ref="#PI"></pubPlace>
+                    <availability>
+                        <p>
+                            <ref target="#ULO"></ref>
+                        </p>
+                    </availability>
+                    <date ref="#d_2021"></date>
+                    <distributor ref="#LabCD"></distributor>
+                    <address>
+                        <addrLine>
+                            <ref target="#LabCulDig"></ref>
+                        </addrLine>
+                        <addrLine>
+                            <ref target="#PI"></ref>
+                        </addrLine>
+                    </address>
+                </publicationStmt>
+
+                <sourceDesc>
+                    <bibl>
+                        <title type="desc">[Crocerossina]</title>
+                        <publisher xml:id="CRI">Croce Rossa Italiana</publisher>
+                    </bibl>
+                    <msDesc>
+                        <msIdentifier>
+                            <country ref="#IT"></country>
+                            <settlement ref="#SP"></settlement>
+                            <repository ref="#MCE"></repository>
+                            <idno>7694/044</idno>
+                        </msIdentifier>
+                        
+                        <!-- Informazioni sul contenuto della cartolina -->
+                        <!-- DESCRIZIONE -->
+                        <msContents>
+                            <summary>
+                                <ref target="#CArt"></ref>
+                            </summary>
+                            <textLang>
+                                <ref target="#it-IT"></ref>
+                            </textLang>
+                        </msContents>
+                        
+                        <physDesc>
+                            <objectDesc>
+                                <supportDesc>
+                                    <support>
+                                        <objectType ref="#cartolina"></objectType>
+                                        <material ref="#carta"></material>
+                                        <dimensions unit="cm">
+                                            <height>9</height>
+                                            <width>14</width>
+                                        </dimensions>
+                                    </support>
+                                    <condition>Buono</condition>
+                                </supportDesc>
+                            </objectDesc>
+                        </physDesc>
+                    </msDesc>
+                    
+                    <listPerson>
+                        <person xml:id="FV">
+                            <persName>
+                                <forename>Francesco</forename>
+                                <surname>Vecchi</surname>
+                            </persName>
+                            <sex>M</sex>
+                            <occupation n="1">Pittore</occupation>
+                        </person>
+
+                        <person xml:id="A.">
+                            <persName>
+                                <forename><abbr type="initial">A.</abbr></forename>
+                            </persName>
+                            <sex>M</sex>
+                        </person>
+
+                        <person xml:id="AT">
+                            <persName>
+                                <forename>Antonietta</forename>
+                                <surname>Turtura</surname>
+                            </persName>
+                            <sex>F</sex>
+                        </person>
+                    </listPerson>
+                    
+                    <listPlace>
+                        <place xml:id="MA">
+                            <placeName>Malo</placeName>
+                            <settlement type="località">città</settlement>
+                            <district type="comune">Malo</district>
+                            <district type="provincia">VI</district>
+                            <district type="regione">Veneto</district>
+                            <country key="N">IT</country>
+                        </place>
+                        
+                        <place xml:id="RA">
+						<placeName >Ravenna</placeName>
+						<settlement type="località">città</settlement>
+						<district type="comune">Ravenna</district>
+						<district type="provincia">RA</district>
+                        <district type="regione">Emilia Romagna</district>
+						<country key="N">IT</country>
+					    </place>
+                    </listPlace>   
+                </sourceDesc>
+            </fileDesc>
+            
+            <profileDesc>
+                <correspDesc>
+                    <note>
+                        La cartolina non presenta né francobolli né timbri postali, quindi non è mai stata spedita.
+                    </note>
+                    <correspAction type="unsent">
+                        <persName ref="#A."></persName>
+                        <placeName ref="#MO"></placeName>
+                        <!-- DATA data di invio da timbro (postage) o da manoscritto (writing) -->
+                        <date type="writing" when="1916-01-20">1916/01/20</date>
+                    </correspAction>
+                    <correspAction type="unreceived">
+                        <persName ref="#AT"></persName>
+                        <placeName ref="#RA"></placeName>
+                    </correspAction>
+                </correspDesc>
+                
+                <textClass>
+                    <keywords>
+                        <!-- soggettario -->
+                        <term>Cartolina</term>
+                        <!-- tipologia -->
+                        <term>Cartolina Artistica</term>
+                        <!-- descrizione -->
+                        <term>Crocerossina</term>
+                    </keywords>
+                </textClass>
+            </profileDesc>
+        </teiHeader>
+
+        <facsimile xml:id="c044">
+            <surface xml:id="c044f">
+                <graphic url='images/7694-044F.jpg' width='1052px' height='1648px' />
+                <zone ulx="17" uly="920" lrx="163" lry="1065" xml:id="c044f_firma"/>
+            </surface>
+            <surface xml:id="c044r">
+                <graphic url='images/7694-044R.jpg' width='1646px' height='1060px' />
+                <zone ulx="7" uly="9" lrx="632" lry="895" xml:id="c044r_messaggio"/>
+                <zone ulx="1354" uly="31" lrx="1601" lry="307" xml:id="c044r_francobolloMancante"/>
+                <zone ulx="119" uly="907" lrx="532" lry="944" xml:id="c044r_croceRossa"/>
+                <zone ulx="1506" uly="38" lrx="1598" lry="110" xml:id="c044r_no."/>
+                <zone ulx="766" uly="950" lrx="832" lry="974" xml:id="c044r_idno."/>
+            </surface>
+        </facsimile>
+
+        <text type="cartolina">
+            <body>
+                <div facs="#c044f" type="fronte">
+                    <figure>
+                        <graphic url='images/7694-044F.jpg'/>
+                        <figDesc>Una crocerossina con un neo sopra il labbro superiore guarda risoluta verso l'alto.</figDesc>
+                        <head>[Crocerossina] di <persName ref="#FV" facs="c044f_firma">F. Vecchi</persName></head>
+                    </figure>
+                </div>
+                <div facs="#c044r" type="retro">
+                    <fw type="no.cartolina" place="top-right" facs="#c044r_no.">44</fw>
+                    <div facs="c044r_messaggio" type="message">
+                        <opener>
+                            <dateline>
+                                <placeName ref="#VI">(Vicenza)</placeName>
+                                <placeName ref="#MA">Malo</placeName>
+                                <date when="1916-01-20">20-1-1916</date>
+                            </dateline>
+                            <salute>Saluti infiniti dal 
+                                <unclear reason="eccentric_ductus"><seg>p</seg><gap reason="eccentric_ductus"/><seg>ese</seg></unclear> ospite
+                            </salute>
+                        </opener>
+                        <p></p>
+                        <closer>
+                                <signed>
+                                    <persName ref="#A."><abbr type="initial">A.</abbr> <unclear reason="eccentric_ductus">Cricca</unclear></persName>
+                                </signed>
+                        </closer>                        
+                    </div>
+                    <div type="destination">
+                        <p>
+                            <address>
+                                <addrLine>Alla brava</addrLine>
+                                <addrLine>
+                                    <choice>
+                                        <expan>Signorina</expan>
+                                        <abbr>Sig.na</abbr>
+                                    </choice>
+                                    <persName ref="#AT">Antonietta Turtura</persName></addrLine>
+                                <addrLine>Via Girolamo Rossi N.58</addrLine>
+                                <addrLine>
+                                    <placeName ref="#MO">Ravenna</placeName>
+                                </addrLine>
+                            </address>
+                        </p>
+                    </div>
+                    <fw type="footer" place="bottom-left" facs="#c044r_croceRossa">Croce Rossa Italiana</fw>
+                    <fw type="footer" place="bottom" facs="#c044r_idno.">1001</fw>
+                </div>
+            </body>
+        </text>
+    </TEI>
+
+     <!-- CARTOLINA 102-->
+    <TEI>
+        <teiHeader>
+            <fileDesc>
+                <titleStmt>
+                    <title>Cartolina 102</title>
+                </titleStmt>
+                
+                <publicationStmt>
+                    <publisher ref="#UdP"></publisher>
+                    <pubPlace ref="#PI"></pubPlace>
+                    <availability>
+                        <p>
+                            <ref target="#ULO"></ref>
+                        </p>
+                    </availability>
+                    <date ref="#d_2021"></date>
+                    <distributor ref="#LabCD"></distributor>
+                    <address>
+                        <addrLine>
+                            <ref target="#LabCulDig"></ref>
+                        </addrLine>
+                        <addrLine>
+                            <ref target="#PI"></ref>
+                        </addrLine>
+                    </address>
+                </publicationStmt>
+
+                <sourceDesc>
+                    <bibl>
+                        <title type="desc">[Donna che scrive una lettera]</title>
+                    </bibl>
+                    <msDesc>
+                        <msIdentifier>
+                            <country ref="#IT"></country>
+                            <settlement ref="#SP"></settlement>
+                            <repository ref="#MCE"></repository>
+                            <idno>7694/102</idno>
+                        </msIdentifier>
+                        
+                        <!-- Informazioni sul contenuto della cartolina -->
+                        <!-- DESCRIZIONE -->
+                        <msContents>
+                            <summary>
+                                <ref target="#CArt"></ref>
+                            </summary>
+                            <textLang>
+                                <ref target="#it-IT"></ref>
+                            </textLang>
+                        </msContents>
+                        
+                        <physDesc>
+                            <objectDesc>
+                                <supportDesc>
+                                    <support>
+                                        <objectType ref="#cartolina"></objectType>
+                                        <material ref="#carta"></material>
+                                        <dimensions unit="cm">
+                                            <height>9</height>
+                                            <width>14</width>
+                                        </dimensions>
+                                        <stamp type="postage">francobollo - Regno d'Italia</stamp>
+                                        <stamp type="postmark">timbro - Roma Ferrovia</stamp>
+                                    </support>
+                                    <condition>Buono</condition>
+                                </supportDesc>
+                            </objectDesc>
+                        </physDesc>
+                    </msDesc>
+                    
+                    <listPerson>
+                        <person xml:id="O.">
+                            <persName>
+                                <forename><abbr type="initial">O.</abbr></forename>
+                            </persName>
+                        </person>
+
+                        <person xml:id="OT">
+                            <persName>
+                                <forename>Oliva</forename>
+                                <surname>Turtura</surname>
+                            </persName>
+                            <sex>F</sex>
+                        </person>
+                    </listPerson>
+                    
+                    <listPlace>
+                        <place xml:id="RO">
+                            <placeName>Roma</placeName>
+                            <settlement type="località">città</settlement>
+                            <district type="comune">Roma</district>
+                            <district type="provincia">ROMA</district>
+                            <district type="regione">Lazio</district>
+                            <country key="N">IT</country>
+                        </place>
+                        
+                        <place>
+                            <placeName>Ravenna</placeName>
+                            <settlement type="località">città</settlement>
+                            <district type="comune">Ravenna</district>
+                            <district type="provincia">RA</district>
+                            <district type="regione">Emilia Romagna</district>
+                            <country key="N">IT</country>
+                        </place>
+                    </listPlace>   
+                </sourceDesc>
+            </fileDesc>
+            
+            <profileDesc>
+                <correspDesc>
+                    <correspAction type="sent">
+                        <persName ref="#O."/>
+                        <placeName ref="#RO"></placeName>
+                        <!-- DATA data di invio da timbro (postage) o da manoscritto (writing) -->
+                        <date when="1916-03-21">1916/03/21</date>
+                    </correspAction>
+                    <correspAction type="received">
+                        <persName ref="#OT"></persName>
+                        <placeName ref="#RA"></placeName>
+                    </correspAction>
+                </correspDesc>
+                
+                <textClass>
+                    <keywords>
+                        <!-- soggettario -->
+                        <term>Cartolina</term>
+                        <!-- tipologia -->
+                        <term>Cartolina Artistica</term>
+                        <!-- descrizione -->
+                        <term>Donna che scrive una lettera</term>
+                    </keywords>
+                </textClass>
+            </profileDesc>
+        </teiHeader>
+
+        <!-- Immagine 102 -->
+        <facsimile xml:id="c102">
+            <surface xml:id="c102f">
+                <graphic url='images/7694-102F.jpg' width='1040px' height='1632px' />
+                <zone points = ' 153,1551 102,1500 51,1549 100,1602 ' xml:id="c102f_simbolo"/>
+                <zone ulx="875" uly="1547" lrx="997" lry="1590" xml:id="c102f_no.seriale"/>
+                <zone ulx="505" uly="688" lrx="603" lry="814" xml:id="c102f_pennarello"/>
+            </surface>
+            <surface xml:id="c102r">
+                <graphic url='images/7694-102R.jpg' width='1616px' height='1028px' />
+                <zone ulx="35" uly="165" lrx="795" lry="783" xml:id="c102r_messaggio"/>
+                <zone points = ' 783,80 913,134 950,239 908,346 780,388 660,344 621,236 664,130 ' xml:id="c102r_timbro"/>
+                <zone ulx="1204" uly="33" lrx="1467" lry="334" xml:id="c102r_francobollo"/>
+                <zone ulx="229" uly="106" lrx="411" lry="184" xml:id="c102r_no."/>
+            </surface>
+        </facsimile>
+
+        <text type="cartolina">
+            <body>
+                <div facs="#c102f" type="fronte">
+                    <figure>
+                        <graphic url='images/7694-102F.jpg'/>
+                        <figDesc>Una donna scrive una lettera seduta ad un tavolo illuminato da una luce sulla destra.</figDesc>
+                        <head>[Donna che scrive una lettera]</head>
+                        <note facs="#c102f_pennarello">
+                            Al centro della cartolina una macchia di inchiostro oscura il dito che la donna si porta al volto.
+                        </note>
+                        <fw type="logoCartolina" place="bottom-left" facs="#c102f_simbolo">Logo romboidale con le lettere S e M sovrapposte.</fw>
+                        <fw type="idno.cartolina" place="bottom-right" facs="c102f_no.seriale">5.4001/5</fw>
+                    </figure>
+                </div>
+                <div facs="#c102r" type="retro">
+                    <fw type="no.cartolina" place="top-left" facs="#c102r_no.">102</fw>
+                    <div facs="c102r_messaggio" type="message">
+                        <opener>
+                            <salute>Ti ricordo sempre con 
+                                <hi rend="underline"><seg>immen</seg><seg><g corresp="s">&#x17F;</g></seg><seg>o</seg></hi> affetto. 
+                            </salute>
+                        </opener>
+                        <p></p>
+                        <closer>
+                                <signed>
+                                    <persName ref="#O."><abbr type="initial">O.</abbr> <gap reason="eccentric_ductus"/></persName>
+                                </signed>
+                                <dateline>
+                                    <placeName ref="#RO">Roma</placeName>
+                                    <date>21 <gap reason="eccentric_ductus"/></date>
+                                </dateline>
+                        </closer>                        
+                    </div>
+                    <div type="destination">
+                        <p>
+                            <stamp type="postmark" facs="#c102r_timbro">
+                                Roma Ferrovia
+                                <date>
+                                    19-20-21 <date rend="latinNumeral">III</date> 1916
+                                </date>
+                            </stamp>
+                            <stamp type="postage" facs="#c102r_francobollo">Francobollo da 5 centesimi del Regno d'Italia
+                                <note>
+                                    Il francobollo è stato apposto sottosopra.
+                                </note>
+                            </stamp>
+                        </p>
+                        <p>
+                            <address>
+                                <addrLine><gap reason="eccentric_ductus"/> Signorina</addrLine>
+                                <addrLine>
+                                    <persName ref="#OT"><hi rend="underline">Oliva Turtura</hi></persName>
+                                </addrLine>
+                                <addrLine>Via Girolamo <seg>Ros</seg><seg><g corresp="s">&#x17F;</g></seg><seg>si</seg></addrLine>
+                                <addrLine><unclear reason="eccentric_ductus"><abbr type="suspension">S.</abbr></unclear> Vittore</addrLine>
+                                <addrLine>
+                                    <placeName ref="#RA"><hi rend="doubleUnderline">Ravenna</hi></placeName>
+                                </addrLine>
+                            </address>
+                        </p>
+                    </div>
+                </div>
+            </body>
+        </text>
+    </TEI>
+</teiCorpus>
