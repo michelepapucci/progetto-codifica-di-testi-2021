@@ -43,7 +43,6 @@
     </xsl:template>
 
     <xsl:template match="/tei:teiCorpus/tei:TEI">
-        <h2><xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/></h2>
         <xsl:apply-templates select="tei:teiHeader"/>
         <div>
             <input type="radio">
@@ -75,7 +74,16 @@
 
     <xsl:template match="tei:teiHeader">
         <div class ="header_c">
-            header
+            <p>Progetto per l'esame di Codifica di Testi 2020/2021: Tre cartoline della Grande Guerra.</p>
+            <h3><xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:title"/></h3>
+            <xsl:if test="count(tei:fileDesc/tei:sourceDesc/tei:bibl/tei:publisher)>0">
+                <p>
+                    Pubblicato da: <xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:publisher"/>
+                    <xsl:if test="count(tei:fileDesc/tei:sourceDesc/tei:bibl/tei:pubPlace)>0">
+                        a <xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:pubPlace"/>
+                    </xsl:if>
+                </p>
+            </xsl:if>
         </div>
     </xsl:template>
 
