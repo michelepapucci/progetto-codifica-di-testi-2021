@@ -26,6 +26,13 @@
                     <a class="c_toggler" id="044">Cartolina 044</a>
                     <a class="c_toggler" id="102">Cartolina 102</a>
                 </div>
+                <div id="header_info">
+                    <a id="header_title">Progetto per l'esame di Codifica di Testi 2020/2021: Tre cartoline della Grande Guerra.<br/></a>
+                    <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:bibl"/><br/>
+                    Conservate al <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:repository"/>,
+                    <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:settlement"/>,
+                    <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:country"/>
+                </div>
                 <div class="c_holder visible" id="c012">
                     <xsl:apply-templates select="/tei:teiCorpus/tei:TEI[1]"/>
                 </div>
@@ -35,49 +42,60 @@
                 <div class="c_holder" id="c102">
                     <xsl:apply-templates select="/tei:teiCorpus/tei:TEI[3]"/>
                 </div>
+
             </body>
         </html>
     </xsl:template>
 
     <xsl:template match="/tei:teiCorpus/tei:TEI">
         <xsl:apply-templates select="tei:teiHeader"/>
-        <div>
+        <div class="radio_holder">
             <input type="radio">
-                <xsl:attribute name ="type">radio</xsl:attribute>
-                <xsl:attribute name="id">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_f</xsl:attribute>
-                <xsl:attribute name="name"><xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_fronte_retro</xsl:attribute>
+                <xsl:attribute name="type">radio</xsl:attribute>
+                <xsl:attribute name="id">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_f
+                </xsl:attribute>
+                <xsl:attribute name="name"><xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_fronte_retro
+                </xsl:attribute>
                 <xsl:attribute name="checked">checked</xsl:attribute>
             </input>
             <xsl:element name="label">
-                <xsl:attribute name="for">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_f</xsl:attribute>
+                <xsl:attribute name="for">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_f
+                </xsl:attribute>
                 Fronte
             </xsl:element>
             <input type="radio">
-                <xsl:attribute name ="type">radio</xsl:attribute>
-                <xsl:attribute name="id">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_r</xsl:attribute>
-                <xsl:attribute name="name"><xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_fronte_retro</xsl:attribute>
+                <xsl:attribute name="type">radio</xsl:attribute>
+                <xsl:attribute name="id">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_r
+                </xsl:attribute>
+                <xsl:attribute name="name"><xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_fronte_retro
+                </xsl:attribute>
             </input>
             <xsl:element name="label">
-                <xsl:attribute name="for">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_r</xsl:attribute>
+                <xsl:attribute name="for">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_r
+                </xsl:attribute>
                 Retro
             </xsl:element>
         </div>
-        <div>
-            <xsl:attribute name="id">f_r_holder_<xsl:value-of select="@xml:id"/></xsl:attribute>
+        <div class="f_r_holder">
+            <xsl:attribute name="id">f_r_holder_<xsl:value-of select="tei:facsimile/@xml:id"/>
+            </xsl:attribute>
             <xsl:apply-templates select="tei:facsimile"/>
             <xsl:apply-templates select="tei:text"/>
         </div>
     </xsl:template>
 
     <xsl:template match="tei:teiHeader">
-        <div class ="header_c">
-            <p>Progetto per l'esame di Codifica di Testi 2020/2021: Tre cartoline della Grande Guerra.</p>
-            <h3><xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:title"/></h3>
+        <div class="header_c">
+            <h3>
+                <xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:title"/>
+            </h3>
             <xsl:if test="count(tei:fileDesc/tei:sourceDesc/tei:bibl/tei:publisher)>0">
                 <p>
-                    Pubblicato da: <xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:publisher"/>
+                    Pubblicato da:
+                    <xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:publisher"/>
                     <xsl:if test="count(tei:fileDesc/tei:sourceDesc/tei:bibl/tei:pubPlace)>0">
-                        a <xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:pubPlace"/>
+                        a
+                        <xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:pubPlace"/>
                     </xsl:if>
                 </p>
             </xsl:if>
@@ -85,15 +103,15 @@
     </xsl:template>
 
     <xsl:template match="tei:facsimile">
-        <div class = "immagini_c">
+        <div class="immagini_c">
             <xsl:apply-templates select="tei:surface"/>
         </div>
     </xsl:template>
 
     <xsl:template match="tei:surface">
-        <xsl:element name ="img">
+        <xsl:element name="img">
             <xsl:attribute name="src">
-                <xsl:value-of select ="tei:graphic/@url"/>
+                <xsl:value-of select="tei:graphic/@url"/>
             </xsl:attribute>
             <xsl:if test="position() = 1">
                 <xsl:attribute name="class">visible</xsl:attribute>
@@ -109,13 +127,15 @@
             <xsl:variable name="temp_id_info_fronte" select="tei:body/tei:div[1]/@facs"/>
             <xsl:variable name="final_id_info_fronte" select="substring-after($temp_id_info_fronte, '#')"/>
             <div class="info_r_f visible">
-                <xsl:attribute name="id">i_<xsl:value-of select="$final_id_info_fronte"/></xsl:attribute>
+                <xsl:attribute name="id">i_<xsl:value-of select="$final_id_info_fronte"/>
+                </xsl:attribute>
                 text fronte
             </div>
             <xsl:variable name="temp_id_info_retro" select="tei:body/tei:div[2]/@facs"/>
             <xsl:variable name="final_id_info_retro" select="substring-after($temp_id_info_retro, '#')"/>
             <div class="info_r_f">
-                <xsl:attribute name="id">i_<xsl:value-of select="$final_id_info_retro"/></xsl:attribute>
+                <xsl:attribute name="id">i_<xsl:value-of select="$final_id_info_retro"/>
+                </xsl:attribute>
                 text retro
             </div>
         </div>
