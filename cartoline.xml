@@ -121,14 +121,13 @@
                         <title type="desc">[Bambini per mano]</title>
                         <publisher xml:id="URS">Ufficio Revisione Stampa</publisher>
                         <pubPlace xml:id="Milano">Milano</pubPlace>
-                    </bibl>
-                    <msDesc>
-                        <msIdentifier>
-                            <country ref="#IT"></country>
-                            <settlement ref="#SP"></settlement>
-                            <repository ref="#MCE"></repository>
-                            <idno>7694/012</idno>
-                        </msIdentifier>
+                    </bibl><msDesc>
+                    <msIdentifier>
+                        <country ref="#IT"></country>
+                        <settlement ref="#SP"></settlement>
+                        <repository ref="#MCE"></repository>
+                        <idno>7694/012</idno>
+                    </msIdentifier>
                         
                         <!-- Informazioni sul contenuto della cartolina -->
                         <!-- DESCRIZIONE -->
