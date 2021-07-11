@@ -39,18 +39,30 @@ html, body {
     color: white;
 }
 
-.header_c {
-    border: 2px solid black;
+#header_info {
+    margin-top: 1%;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 1.5%;
+    font-size: large;
 }
 
 #header_title {
     font-size: xx-large;
 }
 
-.radio_holder {
-    padding: 0.5%;
+h3 {
+    font-size: x-large;
 }
 
+.radio_holder {
+    padding-bottom: 1%;
+    align-items: center;
+}
+
+.radio_holder input[type="radio"] {
+    margin-top: 7px !important;
+}
 .f_r_holder {
     display: flex;
     flex-direction: row;
