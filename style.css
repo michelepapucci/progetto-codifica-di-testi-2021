@@ -1,24 +1,31 @@
-/* Style the header with a grey background and some padding */
 html, body {
-    width: 100%;
-    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Style the header with a grey background and some padding */
 .header {
     overflow: hidden;
     background-color: #f1f1f1;
+    display: flex;
+}
+
+.header-left{
+    display: flex;
+    justify-content: space-around;
 }
 
 /* Style the header links */
 .header a {
-    float: left;
+    
+    flex-grow: 1;
     color: black;
-    text-align: center;
     padding: 12px;
     text-decoration: none;
     font-size: 18px;
     line-height: 25px;
     border-radius: 4px;
+    
 }
 
 /* Change the background color on mouse-over */
@@ -32,9 +39,6 @@ html, body {
     color: white;
 }
 
-.header-left {
-    float: left;
-}
 
 .c_holder, img, .info_r_f{
     display: none;
@@ -55,7 +59,6 @@ html, body {
     float: left;
     width: 50%;
 }
-
 
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
