@@ -1,12 +1,13 @@
 html, body {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    background-color: beige;
 }
 
 /* Style the header with a grey background and some padding */
 .header {
     overflow: hidden;
-    background-color: #f1f1f1;
     display: flex;
 }
 
@@ -17,28 +18,53 @@ html, body {
 
 /* Style the header links */
 .header a {
-    
     flex-grow: 1;
     color: black;
-    padding: 12px;
+    padding: 1%;
+    margin: 1px;
+    border: 2px solid black;
     text-decoration: none;
-    font-size: 18px;
-    line-height: 25px;
     border-radius: 4px;
-    
+    font-size: large;
 }
 
 /* Change the background color on mouse-over */
 .header a:hover {
-    background-color: #ddd;
+    background-color: #d7e0d9;
     color: black;
 }
 
 .header a.active {
-    background-color: dodgerblue;
+    background-color: rgb(26, 78, 49);
     color: white;
 }
 
+.header_c {
+    border: 2px solid black;
+}
+
+#header_title {
+    font-size: xx-large;
+}
+
+.radio_holder {
+    padding: 0.5%;
+}
+
+.f_r_holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.immagini_c {
+    width: 49%;
+}
+
+.info_c {
+    border: 2px solid black;
+    width: 49%;
+}
 
 .c_holder, img, .info_r_f{
     display: none;
@@ -49,27 +75,6 @@ html, body {
     display: initial;
 }
 
-.f_r_holder {
-    display: table;
-    content: "";
-    clear: both;
-}
-
-.info_c, .immagini_c {
-    float: left;
-    width: 50%;
-}
-
-
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
 @media screen and (max-width: 500px) {
-    .header a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-
-    .header-left {
-        float: none;
-    }
 }
