@@ -22,12 +22,9 @@
             </head>
             <body>
                 <div class="header">
-                    <div class="header-left">
-                        <a class="c_toggler active" id="012">Cartolina 012</a>
-                        <a class="c_toggler" id="044">Cartolina 044</a>
-                        <a class="c_toggler" id="102">Cartolina 102</a>
-
-                    </div>
+                    <a class="c_toggler active" id="012">Cartolina 012</a>
+                    <a class="c_toggler" id="044">Cartolina 044</a>
+                    <a class="c_toggler" id="102">Cartolina 102</a>
                 </div>
                 <div class="c_holder visible" id="c012">
                     <xsl:apply-templates select="/tei:teiCorpus/tei:TEI[1]"/>
