@@ -27,9 +27,9 @@
                     <a class="c_toggler" id="102">Cartolina 102</a>
                 </div>
                 <div id="header_info">
-                    <a id="header_title">Progetto per l'esame di Codifica di Testi 2020/2021: Tre cartoline della Grande Guerra.<br/></a>
-                    <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:bibl"/><br/>
-                    Conservate al <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:repository"/>,
+                    <a id="header_title">Progetto per l'esame di Codifica di Testi 2020/2021: Tre cartoline della Grande Guerra.<br/></a><br/>
+                    <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:bibl"/>
+                    conservate al <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:repository"/>,
                     <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:settlement"/>,
                     <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:country"/>
                 </div>
@@ -94,7 +94,7 @@
                     Pubblicato da:
                     <xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:publisher"/>
                     <xsl:if test="count(tei:fileDesc/tei:sourceDesc/tei:bibl/tei:pubPlace)>0">
-                        a
+                        di
                         <xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:pubPlace"/>
                     </xsl:if>
                 </p>
@@ -129,7 +129,20 @@
             <div class="info_r_f visible">
                 <xsl:attribute name="id">i_<xsl:value-of select="$final_id_info_fronte"/>
                 </xsl:attribute>
-                text fronte
+                <div class = "f_desc">
+                    <xsl:value-of select="tei:body/tei:div[1]/tei:figure/tei:figDesc"/>
+                    <br/>
+                    <xsl:if test="count(tei:body/tei:div[1]/tei:figure/tei:head/tei:persName)>0">
+                        Autore: <xsl:value-of select="tei:body/tei:div[1]/tei:figure/tei:head/tei:persName"/>
+                    </xsl:if>
+                </div>
+                <xsl:if test="(count(tei:body/tei:div[1]/tei:figure/tei:note)>0) or (count(tei:body/tei:div[1]/tei:figure/tei:fw)>0)">
+                    <div class = "f_desc_note">
+                        <a class = "titolo_note">Note</a>
+                        <xsl:apply-templates select="tei:body/tei:div[1]/tei:figure/tei:note"/>
+                        <xsl:apply-templates select="tei:body/tei:div[1]/tei:figure/tei:fw"/>
+                    </div>
+                </xsl:if>
             </div>
             <xsl:variable name="temp_id_info_retro" select="tei:body/tei:div[2]/@facs"/>
             <xsl:variable name="final_id_info_retro" select="substring-after($temp_id_info_retro, '#')"/>
@@ -139,6 +152,27 @@
                 text retro
             </div>
         </div>
+    </xsl:template>
+
+    <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:note">
+        <xsl:value-of select="text()"/>
+        <br/>
+    </xsl:template>
+
+    <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:fw">
+        <xsl:if test="@type='logoCartolina'">
+            Logo:
+        </xsl:if>
+        <xsl:if test="@type='idno.cartolina'">
+            Identificatore cartolina:
+        </xsl:if>
+        <xsl:variable name="temp_id_fw_fronte" select="@facs"/>
+        <xsl:variable name="final_id_fw_fronte" select="substring-after($temp_id_fw_fronte, '#')"/>
+        <a><xsl:attribute name="id">
+            <xsl:value-of select="$final_id_fw_fronte"/>
+        </xsl:attribute><xsl:apply-templates select="text()"/>
+        </a>
+        <br/>
     </xsl:template>
 
 </xsl:stylesheet>
