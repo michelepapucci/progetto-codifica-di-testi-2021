@@ -269,10 +269,12 @@
                                 <placeName ref="#PRG">Purgessimo</placeName>
                                 <date>4-10-<gap reason="illegible"/></date>
                             </dateline>
-                            <salute>Ricevi <choice>
-                                <sic>Afettuosi</sic>
-                                <corr>affettuosi</corr>
-                            </choice> saluti
+                            <salute>Ricevi
+                                <choice>
+                                    <sic>Afettuosi</sic>
+                                    <corr>affettuosi</corr>
+                                </choice>
+                                saluti
                             </salute>
                         </opener>
                         <p></p>
@@ -707,7 +709,11 @@
                     <div facs="c102r_messaggio" type="message">
                         <opener>
                             <salute>Ti ricordo sempre con 
-                                <hi rend="underline"><seg>immen</seg><seg><g corresp="s">&#x17F;</g></seg><seg>o</seg></hi> affetto. 
+                                <hi rend="underline">
+                                    <seg>immen</seg>
+                                    <seg><g corresp="s">&#x17F;</g></seg>
+                                    <seg>o</seg>
+                                </hi> affetto.
                             </salute>
                         </opener>
                         <p></p>

@@ -149,9 +149,105 @@
             <div class="info_r_f">
                 <xsl:attribute name="id">i_<xsl:value-of select="$final_id_info_retro"/>
                 </xsl:attribute>
-                text retro
+                <div class = "r_desc">
+                    <xsl:apply-templates select="tei:body/tei:div[2]/tei:div"/>
+                </div>
             </div>
         </div>
+    </xsl:template>
+
+    <xsl:template match="tei:body/tei:div[2]/tei:div[@type='message']">
+        <a>Testo:</a><br/>
+        <xsl:apply-templates select="tei:opener/tei:dateline"/>
+        <xsl:apply-templates select="tei:opener/tei:salute"/>
+        <xsl:apply-templates select="tei:closer"/>
+    </xsl:template>
+
+    <xsl:template match="tei:closer">
+        <xsl:apply-templates select="tei:signed"/>
+        <xsl:apply-templates select="tei:dateline"/>
+    </xsl:template>
+
+    <xsl:template match="tei:dateline">
+        <xsl:apply-templates select="tei:placeName"/>
+        <xsl:apply-templates select="tei:date"/><br/>
+    </xsl:template>
+
+    <xsl:template match="tei:placeName">
+        <xsl:value-of select="text()"/>
+    </xsl:template>
+
+    <xsl:template match="tei:date">
+        <xsl:value-of select="text()"/>
+        <xsl:if test="count(tei:gap)>0">
+            [...]
+        </xsl:if>
+        <xsl:value-of select="following-sibling::text()"/>
+    </xsl:template>
+
+    <xsl:template match="tei:opener/tei:salute">
+        <xsl:choose>
+            <xsl:when test="count(tei:choice)>0">
+                <xsl:value-of select="text()"/>
+                <a class="text-error"><xsl:value-of select="tei:choice/tei:sic"/></a>
+                <a class="text-fix">[<xsl:value-of select="tei:choice/tei:corr"/>]</a>
+                <xsl:value-of select="tei:choice/following-sibling::text()"/><br/>
+            </xsl:when>
+            <xsl:when test="count(tei:unclear)>0">
+                <xsl:value-of select="text()"/>
+                <xsl:apply-templates select="tei:unclear"/>
+                <xsl:value-of select="tei:unclear/following-sibling::text()"/><br/>
+            </xsl:when>
+            <xsl:when test="count(tei:hi)>0">
+                <xsl:value-of select="text()"/>
+                <a class="underline">
+                    <xsl:apply-templates select="tei:hi/tei:seg"/>
+                </a>
+                <xsl:value-of select="tei:hi/following-sibling::text()"/><br/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="text()"/>&#160;
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template match="tei:unclear">
+        <xsl:apply-templates select="child::node()"/>
+    </xsl:template>
+
+    <xsl:template match="tei:unclear/child::node()">
+        <xsl:choose>
+            <xsl:when test="name() = 'seg'">
+                <xsl:value-of select="text()"/>
+            </xsl:when>
+            <xsl:when test="name() = 'gap'">
+                [...]
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template match="tei:hi/tei:seg">
+        <xsl:choose>
+            <xsl:when test="count(tei:g)>0">
+                <xsl:value-of select="tei:g"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="text()"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+
+
+    <xsl:template match="tei:signed">
+        <xsl:value-of select="tei:persName"/>
+        <xsl:if test="count(tei:persName/tei:gap)>0">
+            [...]
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="tei:body/tei:div[2]/tei:div[@type='destination']">
+        <br/><a>Destination:</a>
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:note">
