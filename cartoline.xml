@@ -523,7 +523,8 @@
                                         <expan>Signorina</expan>
                                         <abbr>Sig.na</abbr>
                                     </choice>
-                                    <persName ref="#AT">Antonietta Turtura</persName></addrLine>
+                                    <persName ref="#AT">Antonietta Turtura</persName>
+                                </addrLine>
                                 <addrLine>Via Girolamo Rossi N.58</addrLine>
                                 <addrLine>
                                     <placeName ref="#MO">Ravenna</placeName>

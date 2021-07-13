@@ -129,6 +129,8 @@
             <div class="info_r_f visible">
                 <xsl:attribute name="id">i_<xsl:value-of select="$final_id_info_fronte"/>
                 </xsl:attribute>
+                <a class="bold">Decrizione:</a>
+                <br/>
                 <div class = "f_desc">
                     <xsl:value-of select="tei:body/tei:div[1]/tei:figure/tei:figDesc"/>
                     <br/>
@@ -157,10 +159,43 @@
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[2]/tei:div[@type='message']">
-        <a>Testo:</a><br/>
-        <xsl:apply-templates select="tei:opener/tei:dateline"/>
-        <xsl:apply-templates select="tei:opener/tei:salute"/>
+        <a class="bold">Data e luogo: </a><xsl:apply-templates select="tei:opener/tei:dateline"/>
+        <a class="bold">Testo: </a><xsl:apply-templates select="tei:opener/tei:salute"/>
         <xsl:apply-templates select="tei:closer"/>
+        <br/>
+    </xsl:template>
+
+    <xsl:template match="tei:body/tei:div[2]/tei:div[@type='destination']">
+        <a class="bold">Indirizzo: </a><xsl:apply-templates select="tei:p[last()]/tei:address/tei:addrLine"/>
+    </xsl:template>
+
+    <xsl:template match="tei:address/tei:addrLine">
+        <xsl:choose>
+            <xsl:when test="count(tei:choice)>0">
+                <a class ="abbr"><xsl:value-of select="tei:choice/tei:abbr"/></a> <a class="expan">[<xsl:value-of select="tei:choice/tei:expan"/>]</a>
+                <xsl:choose>
+                    <xsl:when test="count(tei:persName)>0">
+                        <xsl:value-of select="tei:persName"/><br/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <br/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:when test="count(tei:placeName)>0">
+                <xsl:value-of select="tei:placeName"/><br/>
+            </xsl:when>
+            <xsl:when test="count(tei:persName)>0">
+                <xsl:value-of select="tei:persName"/><br/>
+            </xsl:when>
+            <xsl:when test="count(tei:gap)>0">
+                [...]
+                <xsl:value-of select="tei:gap/following-sibling::text()"/><br/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="text()"/><br/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template match="tei:closer">
@@ -237,17 +272,11 @@
         </xsl:choose>
     </xsl:template>
 
-
-
     <xsl:template match="tei:signed">
         <xsl:value-of select="tei:persName"/>
         <xsl:if test="count(tei:persName/tei:gap)>0">
             [...]
         </xsl:if>
-    </xsl:template>
-
-    <xsl:template match="tei:body/tei:div[2]/tei:div[@type='destination']">
-        <br/><a>Destination:</a>
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:note">
