@@ -140,7 +140,7 @@
                 </div>
                 <xsl:if test="(count(tei:body/tei:div[1]/tei:figure/tei:note)>0) or (count(tei:body/tei:div[1]/tei:figure/tei:fw)>0)">
                     <div class = "f_desc_note">
-                        <a class = "titolo_note">Note</a>
+                        <a class = "titolo_note">Note:</a><br/>
                         <xsl:apply-templates select="tei:body/tei:div[1]/tei:figure/tei:note"/>
                         <xsl:apply-templates select="tei:body/tei:div[1]/tei:figure/tei:fw"/>
                     </div>
@@ -159,14 +159,14 @@
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[2]/tei:div[@type='message']">
-        <a class="bold">Data e luogo: </a><xsl:apply-templates select="tei:opener/tei:dateline"/>
+        <xsl:apply-templates select="tei:opener/tei:dateline"/>
         <a class="bold">Testo: </a><xsl:apply-templates select="tei:opener/tei:salute"/>
         <xsl:apply-templates select="tei:closer"/>
         <br/>
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[2]/tei:div[@type='destination']">
-        <a class="bold">Indirizzo: </a><xsl:apply-templates select="tei:p[last()]/tei:address/tei:addrLine"/>
+        <a class="bold">Indirizzo: </a><br/><xsl:apply-templates select="tei:p[last()]/tei:address/tei:addrLine"/>
     </xsl:template>
 
     <xsl:template match="tei:address/tei:addrLine">
@@ -204,6 +204,7 @@
     </xsl:template>
 
     <xsl:template match="tei:dateline">
+        <a class="bold">Data e luogo: </a>
         <xsl:apply-templates select="tei:placeName"/>
         <xsl:apply-templates select="tei:date"/><br/>
     </xsl:template>
@@ -286,7 +287,7 @@
 
     <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:fw">
         <xsl:if test="@type='logoCartolina'">
-            Logo:
+            Logo: <br/>
         </xsl:if>
         <xsl:if test="@type='idno.cartolina'">
             Identificatore cartolina:
