@@ -25,5 +25,4 @@ $(function(){
         $("#i_" + this_id[1] + this_id[2]).addClass('visible');
 
     });
-
 });
