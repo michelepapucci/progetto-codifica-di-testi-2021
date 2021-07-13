@@ -129,7 +129,7 @@
             <div class="info_r_f visible">
                 <xsl:attribute name="id">i_<xsl:value-of select="$final_id_info_fronte"/>
                 </xsl:attribute>
-                <a class="bold">Decrizione:</a>
+                <a class="bold">Descrizione:</a>
                 <br/>
                 <div class = "f_desc">
                     <xsl:value-of select="tei:body/tei:div[1]/tei:figure/tei:figDesc"/>
@@ -140,7 +140,7 @@
                 </div>
                 <xsl:if test="(count(tei:body/tei:div[1]/tei:figure/tei:note)>0) or (count(tei:body/tei:div[1]/tei:figure/tei:fw)>0)">
                     <div class = "f_desc_note">
-                        <a class = "titolo_note">Note:</a><br/>
+                        <a class = "titolo_note bold">Note:</a><br/>
                         <xsl:apply-templates select="tei:body/tei:div[1]/tei:figure/tei:note"/>
                         <xsl:apply-templates select="tei:body/tei:div[1]/tei:figure/tei:fw"/>
                     </div>
@@ -183,10 +183,24 @@
                 </xsl:choose>
             </xsl:when>
             <xsl:when test="count(tei:placeName)>0">
-                <xsl:value-of select="tei:placeName"/><br/>
+                <xsl:choose >
+                    <xsl:when test="count(tei:placeName/tei:hi)>0">
+                        <a class="underline double"><xsl:value-of select="tei:placeName/tei:hi"/></a><br/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="tei:placeName"/><br/>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:when>
             <xsl:when test="count(tei:persName)>0">
-                <xsl:value-of select="tei:persName"/><br/>
+                <xsl:choose >
+                    <xsl:when test="count(tei:persName/tei:hi)>0">
+                        <a class="underline"><xsl:value-of select="tei:persName/tei:hi"/></a><br/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="tei:persName"/><br/>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:when>
             <xsl:when test="count(tei:gap)>0">
                 [...]
@@ -242,7 +256,7 @@
                 <xsl:value-of select="tei:hi/following-sibling::text()"/><br/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="text()"/>&#160;
+                <xsl:value-of select="text()"/><br/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -278,6 +292,7 @@
         <xsl:if test="count(tei:persName/tei:gap)>0">
             [...]
         </xsl:if>
+        <br/>
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:note">
@@ -287,10 +302,10 @@
 
     <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:fw">
         <xsl:if test="@type='logoCartolina'">
-            Logo: <br/>
+            <a class="bold">Logo</a>: <br/>
         </xsl:if>
         <xsl:if test="@type='idno.cartolina'">
-            Identificatore cartolina:
+            <a class="bold">Identificatore cartolina</a>:
         </xsl:if>
         <xsl:variable name="temp_id_fw_fronte" select="@facs"/>
         <xsl:variable name="final_id_fw_fronte" select="substring-after($temp_id_fw_fronte, '#')"/>
