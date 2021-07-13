@@ -87,7 +87,7 @@
     <xsl:template match="tei:teiHeader">
         <div class="header_c">
             <h3>
-                <xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:title"/>
+                <a class="bold">Titolo: </a><xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:title"/>
             </h3>
             <xsl:if test="count(tei:fileDesc/tei:sourceDesc/tei:bibl/tei:publisher)>0">
                 <p>
@@ -159,14 +159,20 @@
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[2]/tei:div[@type='message']">
-        <xsl:apply-templates select="tei:opener/tei:dateline"/>
-        <a class="bold">Testo: </a><xsl:apply-templates select="tei:opener/tei:salute"/>
-        <xsl:apply-templates select="tei:closer"/>
-        <br/>
+        <div class="dateline_div">
+            <xsl:apply-templates select="tei:opener/tei:dateline"/>
+        </div>
+        <div cclass="text_div">
+            <a class="bold">Testo: </a><xsl:apply-templates select="tei:opener/tei:salute"/>
+            <xsl:apply-templates select="tei:closer"/>
+            <br/>
+        </div>
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[2]/tei:div[@type='destination']">
-        <a class="bold">Indirizzo: </a><br/><xsl:apply-templates select="tei:p[last()]/tei:address/tei:addrLine"/>
+        <div class="destination_div">
+            <a class="bold">Indirizzo: </a><br/><xsl:apply-templates select="tei:p[last()]/tei:address/tei:addrLine"/>
+        </div>
     </xsl:template>
 
     <xsl:template match="tei:address/tei:addrLine">
