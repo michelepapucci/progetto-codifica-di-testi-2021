@@ -2,16 +2,11 @@ html, body {
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-color: beige;
+    background-color: #e1c699;
 }
 
 /* Style the header with a grey background and some padding */
 .header {
-    overflow: hidden;
-    display: flex;
-}
-
-.header-left{
     display: flex;
     justify-content: space-around;
 }
@@ -22,7 +17,7 @@ html, body {
     color: black;
     padding: 1%;
     margin: 1px;
-    border: 2px solid black;
+    border: 1.5px solid black;
     text-decoration: none;
     border-radius: 4px;
     font-size: large;
@@ -30,19 +25,18 @@ html, body {
 
 /* Change the background color on mouse-over */
 .header a:hover {
-    background-color: #d7e0d9;
+    background-color: #bcc3b5;
     color: black;
 }
 
 .header a.active {
-    background-color: rgb(26, 78, 49);
-    color: white;
+    background-color: #78866b;
 }
 
 #header_info {
     margin-top: 1%;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-top: 1.5px solid black;
+    border-bottom: 1.5px solid black;
     padding: 1.5%;
     font-size: large;
 }
@@ -60,9 +54,6 @@ h3 {
     align-items: center;
 }
 
-.radio_holder input[type="radio"] {
-    margin-top: 7px !important;
-}
 .f_r_holder {
     display: flex;
     flex-direction: row;
@@ -74,8 +65,19 @@ h3 {
 }
 
 .info_c {
-    border: 2px solid black;
+    border: 1.5px solid black;
     width: 49%;
+    display: flex;
+    align-items: center;
+}
+
+.info_r_f {
+    font-size: large;
+    justify-content: center;
+}
+
+.f_desc {
+    margin: 2%;
 }
 
 .c_holder, img, .info_r_f{
@@ -85,6 +87,10 @@ h3 {
 
 .visible {
     display: initial;
+}
+
+#c044f, #c102f {
+    width: 50%;
 }
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
