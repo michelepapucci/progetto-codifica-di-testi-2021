@@ -76,8 +76,9 @@ h3 {
     justify-content: center;
 }
 
-.f_desc {
+.f_desc, .r_desc{
     margin: 2%;
+    text-align: left;
 }
 
 .c_holder, img, .info_r_f{
