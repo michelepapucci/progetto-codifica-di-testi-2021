@@ -6,6 +6,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tei="http://www.tei-c.org/ns/1.0" version="1.0">
     <xsl:output method="html" encoding="UTF-8" indent="yes"/>
     <xsl:variable name="space"><![CDATA[&#32;]]></xsl:variable>
+
     <xsl:template match="/">
         <xsl:comment>
             Progetto esame Codifica di Testi
@@ -162,7 +163,7 @@
         <div class="dateline_div">
             <xsl:apply-templates select="tei:opener/tei:dateline"/>
         </div>
-        <div cclass="text_div">
+        <div class="text_div">
             <a class="bold">Testo: </a><xsl:apply-templates select="tei:opener/tei:salute"/>
             <xsl:apply-templates select="tei:closer"/>
             <br/>
@@ -178,7 +179,10 @@
     <xsl:template match="tei:address/tei:addrLine">
         <xsl:choose>
             <xsl:when test="count(tei:choice)>0">
-                <a class ="abbr"><xsl:value-of select="tei:choice/tei:abbr"/></a> <a class="expan">[<xsl:value-of select="tei:choice/tei:expan"/>]</a>
+                <a class ="abbr"><xsl:value-of select="tei:choice/tei:abbr"/></a>
+                <xsl:value-of select="$space" disable-output-escaping="yes"/>
+                <a class="expan">[<xsl:value-of select="tei:choice/tei:expan"/>]</a>
+                <xsl:value-of select="$space" disable-output-escaping="yes"/>
                 <xsl:choose>
                     <xsl:when test="count(tei:persName)>0">
                         <xsl:value-of select="tei:persName"/><br/>
@@ -225,7 +229,7 @@
 
     <xsl:template match="tei:dateline">
         <a class="bold">Data e luogo: </a>
-        <xsl:apply-templates select="tei:placeName"/>
+        <xsl:apply-templates select="tei:placeName"/><xsl:value-of select="$space" disable-output-escaping="yes"/>
         <xsl:apply-templates select="tei:date"/><br/>
     </xsl:template>
 
@@ -235,9 +239,7 @@
 
     <xsl:template match="tei:date">
         <xsl:value-of select="text()"/>
-        <xsl:if test="count(tei:gap)>0">
-            [...]
-        </xsl:if>
+        <xsl:if test="count(tei:gap)>0">[...]</xsl:if>
         <xsl:value-of select="following-sibling::text()"/>
     </xsl:template>
 
@@ -246,7 +248,9 @@
             <xsl:when test="count(tei:choice)>0">
                 <xsl:value-of select="text()"/>
                 <a class="text-error"><xsl:value-of select="tei:choice/tei:sic"/></a>
+                <xsl:value-of select="$space" disable-output-escaping="yes"/>
                 <a class="text-fix">[<xsl:value-of select="tei:choice/tei:corr"/>]</a>
+                <xsl:value-of select="$space" disable-output-escaping="yes"/>
                 <xsl:value-of select="tei:choice/following-sibling::text()"/><br/>
             </xsl:when>
             <xsl:when test="count(tei:unclear)>0">
@@ -256,6 +260,7 @@
             </xsl:when>
             <xsl:when test="count(tei:hi)>0">
                 <xsl:value-of select="text()"/>
+                <xsl:value-of select="$space" disable-output-escaping="yes"/>
                 <a class="underline">
                     <xsl:apply-templates select="tei:hi/tei:seg"/>
                 </a>
@@ -276,9 +281,7 @@
             <xsl:when test="name() = 'seg'">
                 <xsl:value-of select="text()"/>
             </xsl:when>
-            <xsl:when test="name() = 'gap'">
-                [...]
-            </xsl:when>
+            <xsl:when test="name() = 'gap'">[...]</xsl:when>
         </xsl:choose>
     </xsl:template>
 
@@ -303,7 +306,7 @@
 
     <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:note">
         <xsl:value-of select="text()"/>
-        <br/>
+        <br/><br/>
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:fw">
