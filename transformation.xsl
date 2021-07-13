@@ -160,14 +160,24 @@
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[2]/tei:div[@type='message']">
-        <div class="dateline_div">
             <xsl:apply-templates select="tei:opener/tei:dateline"/>
-        </div>
-        <div class="text_div">
-            <a class="bold">Testo: </a><xsl:apply-templates select="tei:opener/tei:salute"/>
-            <xsl:apply-templates select="tei:closer"/>
-            <br/>
-        </div>
+        <xsl:choose>
+            <xsl:when test="count(tei:closer/tei:dateline)>0">
+                <div class="text_div">
+                    <a class="bold">Testo: </a><xsl:apply-templates select="tei:opener/tei:salute"/>
+                    <xsl:apply-templates select="tei:closer/tei:signed"/>
+                </div>
+                <br/>
+                <xsl:apply-templates select="tei:closer/tei:dateline"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <div class="text_div">
+                    <a class="bold">Testo: </a><xsl:apply-templates select="tei:opener/tei:salute"/>
+                    <xsl:apply-templates select="tei:closer"/>
+                    <br/>
+                </div>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[2]/tei:div[@type='destination']">
@@ -228,9 +238,12 @@
     </xsl:template>
 
     <xsl:template match="tei:dateline">
-        <a class="bold">Data e luogo: </a>
-        <xsl:apply-templates select="tei:placeName"/><xsl:value-of select="$space" disable-output-escaping="yes"/>
-        <xsl:apply-templates select="tei:date"/><br/>
+        <div class = "dateline_div">
+            <a class="bold">Data e luogo: </a>
+            <xsl:apply-templates select="tei:placeName"/><xsl:value-of select="$space" disable-output-escaping="yes"/>
+            <xsl:apply-templates select="tei:date"/>
+        </div>
+        <br/>
     </xsl:template>
 
     <xsl:template match="tei:placeName">
@@ -298,9 +311,7 @@
 
     <xsl:template match="tei:signed">
         <xsl:value-of select="tei:persName"/>
-        <xsl:if test="count(tei:persName/tei:gap)>0">
-            [...]
-        </xsl:if>
+        <xsl:if test="count(tei:persName/tei:gap)>0">[...]</xsl:if>
         <br/>
     </xsl:template>
 
