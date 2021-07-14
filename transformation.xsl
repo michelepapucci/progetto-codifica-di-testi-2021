@@ -222,6 +222,21 @@
                 <a>Note:</a><xsl:value-of select="$space" disable-output-escaping="yes"/>
                 <xsl:apply-templates select="tei:note"/>
             </xsl:if>
+            <xsl:variable name="temp_area_id" select="@facs"/>
+            <xsl:variable name="final_area_id" select="substring-after($temp_area_id, '#')"/>
+            <span>
+                <xsl:choose>
+                    <xsl:when test="count(//tei:zone[@xml:id = $final_area_id]/@ulx)>0">
+                        <xsl:attribute name="data-ulx"><xsl:value-of select="//tei:zone[@xml:id = $final_area_id]/@ulx"/></xsl:attribute>
+                        <xsl:attribute name="data-uly"><xsl:value-of select="//tei:zone[@xml:id = $final_area_id]/@uly"/></xsl:attribute>
+                        <xsl:attribute name="data-lrx"><xsl:value-of select="//tei:zone[@xml:id = $final_area_id]/@lrx"/></xsl:attribute>
+                        <xsl:attribute name="data-lry"><xsl:value-of select="//tei:zone[@xml:id = $final_area_id]/@lry"/></xsl:attribute>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:attribute name="data-points"><xsl:value-of select="//tei:zone[@xml:id = $final_area_id]/@points"/></xsl:attribute>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </span>
         </div>
         <br/>
     </xsl:template>
