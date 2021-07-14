@@ -28,7 +28,7 @@
                     <a class="c_toggler" id="102">Cartolina 102</a>
                 </div>
                 <div id="header_info">
-                    <a id="header_title">Progetto per l'esame di Codifica di Testi 2020/2021: Tre cartoline della Grande Guerra.<br/></a><br/>
+                    <a id="header_title">Codifica di testi: Tre cartoline della Grande Guerra.<br/></a><br/>
                     <a class="bold">Provenienza cartoline: </a> <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:bibl"/>
                     conservate al <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:repository"/>,
                     <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:settlement"/>,
@@ -192,7 +192,7 @@
         <xsl:if test="count(tei:p/tei:stamp)>0">
             <div class="stamp_div">
                 <br/>
-                <a class="bold">Timbri e Note:</a>
+                <a class="bold">Timbri e Francobolli:</a>
                 <br/>
                 <xsl:apply-templates select="tei:p/tei:stamp"/>
             </div>
@@ -219,7 +219,7 @@
             </xsl:if>
             <xsl:if test="count(tei:note)>0">
                 <br/>
-                <a>Note:</a><xsl:value-of select="$space" disable-output-escaping="yes"/>
+                <a>Nota:</a><xsl:value-of select="$space" disable-output-escaping="yes"/>
                 <xsl:apply-templates select="tei:note"/>
             </xsl:if>
             <xsl:variable name="temp_area_id" select="@facs"/>
