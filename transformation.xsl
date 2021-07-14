@@ -132,14 +132,12 @@
                 </xsl:attribute>
                 <div class = "f_desc">
                     <a class="bold">Descrizione:</a>
-                    <br/>
                     <xsl:value-of select="tei:body/tei:div[1]/tei:figure/tei:figDesc"/>
-                    <br/>
+                    <br/><br/>
                     <xsl:if test="count(tei:body/tei:div[1]/tei:figure/tei:head/tei:persName)>0">
-                        <a class="bold">Autore: </a><br/>
+                        <a class="bold">Autore: </a>
                         <xsl:value-of select="tei:body/tei:div[1]/tei:figure/tei:head/tei:persName"/>
                     </xsl:if>
-                </div>
                 <xsl:if test="(count(tei:body/tei:div[1]/tei:figure/tei:note)>0) or (count(tei:body/tei:div[1]/tei:figure/tei:fw)>0)">
                     <div class = "f_desc_note">
                         <a class = "titolo_note bold">Note:</a><br/>
@@ -147,6 +145,7 @@
                         <xsl:apply-templates select="tei:body/tei:div[1]/tei:figure/tei:fw"/>
                     </div>
                 </xsl:if>
+                </div>
             </div>
             <xsl:variable name="temp_id_info_retro" select="tei:body/tei:div[2]/@facs"/>
             <xsl:variable name="final_id_info_retro" select="substring-after($temp_id_info_retro, '#')"/>
