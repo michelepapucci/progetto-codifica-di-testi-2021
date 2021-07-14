@@ -214,6 +214,7 @@
             </xsl:choose>
             <xsl:value-of select="$space" disable-output-escaping="yes"/>
             <xsl:value-of select="text()"/>
+            <xsl:apply-templates select="tei:damage"/>
             <xsl:if test="count(tei:date)>0">
                 <xsl:apply-templates select="tei:date"/>
             </xsl:if>
@@ -239,6 +240,11 @@
             </span>
         </div>
         <br/>
+    </xsl:template>
+
+    <xsl:template match ="tei:damage">
+        <xsl:value-of select="text()"/>
+        <xsl:apply-templates select="tei:unclear"/>
     </xsl:template>
 
     <xsl:template match="tei:address/tei:addrLine">
@@ -320,12 +326,6 @@
         <xsl:value-of select="$space" disable-output-escaping="yes"/>
     </xsl:template>
 
-    <xsl:template match="tei:date">
-        <xsl:value-of select="text()"/>
-        <xsl:if test="count(tei:gap)>0">[...]</xsl:if>
-        <xsl:value-of select="following-sibling::text()"/>
-    </xsl:template>
-
     <xsl:template match="tei:opener/tei:salute">
         <xsl:choose>
             <xsl:when test="count(tei:choice)>0">
@@ -356,11 +356,15 @@
     </xsl:template>
 
     <xsl:template match="tei:unclear">
+        <xsl:value-of select="text()"/>
         <xsl:apply-templates select="child::node()"/>
     </xsl:template>
 
     <xsl:template match="tei:unclear/child::node()">
         <xsl:choose>
+            <xsl:when test="name() = 'date'">
+                <xsl:apply-templates select="tei:date"/>
+            </xsl:when>
             <xsl:when test="name() = 'seg'">
                 <xsl:value-of select="text()"/>
             </xsl:when>
@@ -404,10 +408,17 @@
         <xsl:variable name="final_id_fw_fronte" select="substring-after($temp_id_fw_fronte, '#')"/>
         <a><xsl:attribute name="id">
             <xsl:value-of select="$final_id_fw_fronte"/>
-        </xsl:attribute><xsl:apply-templates select="text()"/>
+        </xsl:attribute><xsl:value-of select="text()"/>
         </a>
         <br/>
     </xsl:template>
 
+    <xsl:template match="tei:date">
+        <xsl:value-of select="text()"/>
+        <xsl:apply-templates select="tei:gap"/>
+        <xsl:value-of select="following-sibling::text()"/>
+    </xsl:template>
+
+    <xsl:template match="tei:gap">[...]</xsl:template>
 
 </xsl:stylesheet>
