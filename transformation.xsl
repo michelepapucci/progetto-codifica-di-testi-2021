@@ -29,7 +29,7 @@
                 </div>
                 <div id="header_info">
                     <a id="header_title">Progetto per l'esame di Codifica di Testi 2020/2021: Tre cartoline della Grande Guerra.<br/></a><br/>
-                    <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:bibl"/>
+                    <a class="bold">Provenienza cartoline: </a> <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:bibl"/>
                     conservate al <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:repository"/>,
                     <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:settlement"/>,
                     <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:country"/>
@@ -136,7 +136,8 @@
                     <xsl:value-of select="tei:body/tei:div[1]/tei:figure/tei:figDesc"/>
                     <br/>
                     <xsl:if test="count(tei:body/tei:div[1]/tei:figure/tei:head/tei:persName)>0">
-                        Autore: <xsl:value-of select="tei:body/tei:div[1]/tei:figure/tei:head/tei:persName"/>
+                        <a class="bold">Autore: </a><br/>
+                        <xsl:value-of select="tei:body/tei:div[1]/tei:figure/tei:head/tei:persName"/>
                     </xsl:if>
                 </div>
                 <xsl:if test="(count(tei:body/tei:div[1]/tei:figure/tei:note)>0) or (count(tei:body/tei:div[1]/tei:figure/tei:fw)>0)">
@@ -187,6 +188,7 @@
     </xsl:template>
 
     <xsl:template match="tei:address/tei:addrLine">
+        <xsl:apply-templates select="tei:unclear"/>
         <xsl:choose>
             <xsl:when test="count(tei:choice)>0">
                 <a class ="abbr"><xsl:value-of select="tei:choice/tei:abbr"/></a>
@@ -226,10 +228,17 @@
                 [...]
                 <xsl:value-of select="tei:gap/following-sibling::text()"/><br/>
             </xsl:when>
+            <xsl:when test="count(tei:seg)>0">
+                <xsl:value-of select="text()"/>
+                <xsl:value-of select="$space" disable-output-escaping="yes"/>
+                <xsl:apply-templates select="tei:seg"/>
+                <xsl:value-of select="tei:seg/following-sibling::text()"/><br/>
+            </xsl:when>
             <xsl:otherwise>
                 <xsl:value-of select="text()"/><br/>
             </xsl:otherwise>
         </xsl:choose>
+
     </xsl:template>
 
     <xsl:template match="tei:closer">
@@ -240,7 +249,7 @@
     <xsl:template match="tei:dateline">
         <div class = "dateline_div">
             <a class="bold">Data e luogo: </a>
-            <xsl:apply-templates select="tei:placeName"/><xsl:value-of select="$space" disable-output-escaping="yes"/>
+            <xsl:apply-templates select="tei:placeName"/>
             <xsl:apply-templates select="tei:date"/>
         </div>
         <br/>
@@ -248,6 +257,7 @@
 
     <xsl:template match="tei:placeName">
         <xsl:value-of select="text()"/>
+        <xsl:value-of select="$space" disable-output-escaping="yes"/>
     </xsl:template>
 
     <xsl:template match="tei:date">
@@ -295,10 +305,13 @@
                 <xsl:value-of select="text()"/>
             </xsl:when>
             <xsl:when test="name() = 'gap'">[...]</xsl:when>
+            <xsl:when test="name() = 'abbr'">
+                <xsl:value-of select="text()"/>
+            </xsl:when>
         </xsl:choose>
     </xsl:template>
 
-    <xsl:template match="tei:hi/tei:seg">
+    <xsl:template match="tei:seg">
         <xsl:choose>
             <xsl:when test="count(tei:g)>0">
                 <xsl:value-of select="tei:g"/>
@@ -317,15 +330,15 @@
 
     <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:note">
         <xsl:value-of select="text()"/>
-        <br/><br/>
+        <br/>
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:fw">
         <xsl:if test="@type='logoCartolina'">
-            <a class="bold">Logo</a>: <br/>
+            <a class="bold">Logo: </a><br/>
         </xsl:if>
         <xsl:if test="@type='idno.cartolina'">
-            <a class="bold">Identificatore cartolina</a>:
+            <a class="bold">Identificatore cartolina: </a><br/>
         </xsl:if>
         <xsl:variable name="temp_id_fw_fronte" select="@facs"/>
         <xsl:variable name="final_id_fw_fronte" select="substring-after($temp_id_fw_fronte, '#')"/>
@@ -335,5 +348,6 @@
         </a>
         <br/>
     </xsl:template>
+
 
 </xsl:stylesheet>
