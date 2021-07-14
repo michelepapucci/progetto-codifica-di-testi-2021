@@ -182,7 +182,44 @@
 
     <xsl:template match="tei:body/tei:div[2]/tei:div[@type='destination']">
         <div class="destination_div">
-            <a class="bold">Indirizzo: </a><br/><xsl:apply-templates select="tei:p[last()]/tei:address/tei:addrLine"/>
+            <a class="bold">Indirizzo:</a>
+            <br/>
+            <xsl:apply-templates select="tei:p[last()]/tei:address/tei:addrLine"/>
+        </div>
+        <xsl:if test="count(tei:p/tei:stamp)>0">
+            <div class="stamp_div">
+                <br/>
+                <a class="bold">Timbri e Note:</a>
+                <br/>
+                <xsl:apply-templates select="tei:p/tei:stamp"/>
+            </div>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="tei:p/tei:stamp">
+        <xsl:variable name="temp_id_stamp" select="@facs"/>
+        <xsl:variable name="final_id_stamp" select="substring-after($temp_id_stamp, '#')"/>
+        <div class="stamp">
+            <xsl:attribute name="id"><xsl:value-of select="$final_id_stamp"/></xsl:attribute>
+            <xsl:choose>
+                <xsl:when test="@type='postmark'">
+                    Timbro:
+                </xsl:when>
+                <xsl:when test="@type='postage'">
+                    Francobollo:
+                </xsl:when>
+            </xsl:choose>
+            <xsl:value-of select="$space" disable-output-escaping="yes"/>
+            <xsl:value-of select="text()"/>
+            <xsl:if test="count(tei:date)>0">
+                <xsl:apply-templates select="tei:date"/>
+            </xsl:if>
+            <xsl:if test="count(tei:note)>0">
+                <br/>
+                <a>Note:</a>
+                <br/>
+                <xsl:apply-templates select="tei:note"/>
+            </xsl:if>
         </div>
     </xsl:template>
 
@@ -216,7 +253,13 @@
             <xsl:when test="count(tei:persName)>0">
                 <xsl:choose >
                     <xsl:when test="count(tei:persName/tei:hi)>0">
-                        <a class="underline"><xsl:value-of select="tei:persName/tei:hi"/></a><br/>
+                            <xsl:for-each select="tei:persName/tei:hi">
+                                <a class="underline">
+                                <xsl:value-of select="text()"/>
+                                </a>
+                                <xsl:value-of select="$space" disable-output-escaping="yes"/>
+                            </xsl:for-each>
+                        <br/>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:value-of select="tei:persName"/><br/>
