@@ -73,7 +73,6 @@ h3 {
 
 .info_r_f {
     font-size: large;
-    justify-content: center;
 }
 
 .bold {
@@ -89,7 +88,9 @@ h3 {
 }
 
 .f_desc, .r_desc{
+    display: flex;
     margin: 2%;
+    flex-direction: column;
 }
 
 .c_holder, img, .info_r_f{
@@ -108,13 +109,3 @@ h3 {
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
 @media screen and (max-width: 500px) {
 }
-
-/* Decrizione non ha la "s";
-   A Note: e Logo: e Autore: e Identificatore cartolina: va aggiunta la classe bold
-   Olivia Turtura deve avere la classe .underline
-   Ravenna deve avere le classi .underline e .double
-   Data e luogo nell'ultima cartolina devono andare a capo
-   Per ogni retro cartolina devono crearsi tre blocchi div dentro al div r_desc:
-   - uno deve tenere da Data..fino a prima di Testo
-   - uno deve tenere da Testo... fino a Indirizzo
-   - uno deve tenere da Indirizzo... fino in fondo
