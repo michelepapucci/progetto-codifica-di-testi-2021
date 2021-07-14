@@ -39,7 +39,7 @@ body {
 
 /* Header con spiegazione del progetto */
 #header_info {
-    margin-top: 1%;
+    margin-top: 0.5%;
     border-top: 1.5px solid black;
     border-bottom: 1.5px solid black;
     padding: 1.5%;
@@ -70,13 +70,13 @@ h3 {
 
 /* Div immagine cartolina */
 .immagini_c {
-    width: 49%;
+    width: 47%;
 }
 
 /* Div descrizione cartolina */
 .info_c {
     border: 1.5px solid black;
-    width: 49%;
+    width: 47%;
     display: flex;
     align-items: center;
 }
@@ -87,8 +87,10 @@ h3 {
 
 .f_desc, .r_desc{
     display: flex;
-    margin: 2%;
+    margin: 3% 3% 3% 5%;
     flex-direction: column;
+    justify-content: center;
+    text-align: left;
 }
 
 .c_holder, img, .info_r_f{
