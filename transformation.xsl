@@ -121,6 +121,9 @@
                 <xsl:value-of select="@xml:id"/>
             </xsl:attribute>
         </xsl:element>
+        <canvas>
+            <xsl:attribute name="id">can_<xsl:value-of select="@xml:id"/></xsl:attribute>
+        </canvas>
     </xsl:template>
 
     <xsl:template match="tei:text">
@@ -216,11 +219,11 @@
             </xsl:if>
             <xsl:if test="count(tei:note)>0">
                 <br/>
-                <a>Note:</a>
-                <br/>
+                <a>Note:</a><xsl:value-of select="$space" disable-output-escaping="yes"/>
                 <xsl:apply-templates select="tei:note"/>
             </xsl:if>
         </div>
+        <br/>
     </xsl:template>
 
     <xsl:template match="tei:address/tei:addrLine">

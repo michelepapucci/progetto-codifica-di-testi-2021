@@ -93,6 +93,10 @@ h3 {
     text-align: left;
 }
 
+canvas{
+    display:none;
+}
+
 .c_holder, img, .info_r_f{
     display: none;
     width: 100%;
