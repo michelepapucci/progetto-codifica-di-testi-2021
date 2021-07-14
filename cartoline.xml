@@ -748,7 +748,7 @@
                                 <addrLine>
                                     <persName ref="#OT"><hi rend="underline">Oliva</hi> <hi rend="underline">Turtura</hi></persName>
                                 </addrLine>
-                                <addrLine>Via Girolamo <seg>Ros</seg><seg><g corresp="s">&#x17F;</g></seg><seg>si</seg></addrLine>
+                                <addrLine>Via Girolamo <seg>Ros</seg><seg><g corresp="s">&#x17F;</g></seg><seg>i</seg></addrLine>
                                 <addrLine><unclear reason="eccentric_ductus"><abbr type="suspension">S.</abbr></unclear> Vittore</addrLine>
                                 <addrLine>
                                     <placeName ref="#RA"><hi rend="doubleUnderline">Ravenna</hi></placeName>
