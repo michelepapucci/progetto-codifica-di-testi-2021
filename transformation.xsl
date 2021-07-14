@@ -130,9 +130,9 @@
             <div class="info_r_f visible">
                 <xsl:attribute name="id">i_<xsl:value-of select="$final_id_info_fronte"/>
                 </xsl:attribute>
-                <a class="bold">Descrizione:</a>
-                <br/>
                 <div class = "f_desc">
+                    <a class="bold">Descrizione:</a>
+                    <br/>
                     <xsl:value-of select="tei:body/tei:div[1]/tei:figure/tei:figDesc"/>
                     <br/>
                     <xsl:if test="count(tei:body/tei:div[1]/tei:figure/tei:head/tei:persName)>0">
