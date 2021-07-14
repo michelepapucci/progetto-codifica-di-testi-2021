@@ -5,7 +5,7 @@
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title>Progetto Codifica di Testi 2020-2021: Tre cartoline ad Olivia Turtura</title>
+                <title>Progetto Codifica di Testi 2020-2021: Tre cartoline della Grande Guerra</title>
                 <respStmt>
                     <resp>Trascritto da:</resp>
                     <name xml:id="MP">Michele Papucci</name>
@@ -746,9 +746,9 @@
                             <address>
                                 <addrLine><gap reason="eccentric_ductus"/> Signorina</addrLine>
                                 <addrLine>
-                                    <persName ref="#OT"><hi rend="underline">Oliva Turtura</hi></persName>
+                                    <persName ref="#OT"><hi rend="underline">Oliva</hi> <hi rend="underline">Turtura</hi></persName>
                                 </addrLine>
-                                <addrLine>Via Girolamo <seg>Ros</seg><seg><g corresp="s">&#x17F;</g></seg><seg>si</seg></addrLine>
+                                <addrLine>Via Girolamo <seg>Ros</seg><seg><g corresp="s">&#x17F;</g></seg><seg>i</seg></addrLine>
                                 <addrLine><unclear reason="eccentric_ductus"><abbr type="suspension">S.</abbr></unclear> Vittore</addrLine>
                                 <addrLine>
                                     <placeName ref="#RA"><hi rend="doubleUnderline">Ravenna</hi></placeName>
