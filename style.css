@@ -1,17 +1,22 @@
-html, body {
+/* Body flex con testo centrato */
+body {
     display: flex;
     flex-direction: column;
     text-align: center;
     background-color: #e1c699;
 }
 
-/* Style the header with a grey background and some padding */
+/* Navbar sticky con sfondo opaco */
 .header {
     display: flex;
     justify-content: space-around;
+    background-color: #e1c699;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-/* Style the header links */
+/* Bottoni navbar */
 .header a {
     flex-grow: 1;
     color: black;
@@ -23,7 +28,6 @@ html, body {
     font-size: large;
 }
 
-/* Change the background color on mouse-over */
 .header a:hover {
     background-color: #bcc3b5;
     color: black;
@@ -33,6 +37,7 @@ html, body {
     background-color: #78866b;
 }
 
+/* Header con spiegazione del progetto */
 #header_info {
     margin-top: 1%;
     border-top: 1.5px solid black;
@@ -45,25 +50,30 @@ html, body {
     font-size: xx-large;
 }
 
+/* Titolo cartolina */
 h3 {
     font-size: x-large;
 }
 
+/* Bottoni fronte-retro */
 .radio_holder {
     padding-bottom: 1%;
     align-items: center;
 }
 
+/* Div con cartolina e testo a fianco */
 .f_r_holder {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
+/* Div immagine cartolina */
 .immagini_c {
     width: 49%;
 }
 
+/* Div descrizione cartolina */
 .info_c {
     border: 1.5px solid black;
     width: 49%;
@@ -73,6 +83,22 @@ h3 {
 
 .info_r_f {
     font-size: large;
+}
+
+.f_desc, .r_desc{
+    display: flex;
+    margin: 2%;
+    flex-direction: column;
+}
+
+.c_holder, img, .info_r_f{
+    display: none;
+    width: 100%;
+}
+
+/* Proprietà generali */
+.visible {
+    display: initial;
 }
 
 .bold {
@@ -87,25 +113,20 @@ h3 {
     text-decoration-style: double;
 }
 
-.f_desc, .r_desc{
-    display: flex;
-    margin: 2%;
-    flex-direction: column;
-}
-
-.c_holder, img, .info_r_f{
-    display: none;
-    width: 100%;
-}
-
-.visible {
-    display: initial;
-}
-
+/* Le immagini in verticale sono mostrate più strette del 50% */
 #c044f, #c102f {
     width: 50%;
 }
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
+
+    .f_r_holder, .header {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .immagini_c, .info_c {
+        width: 100%;
+    }
 }
