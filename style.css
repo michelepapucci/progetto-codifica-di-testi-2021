@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&family=Hind+Siliguri&display=swap');
+
 /* Body flex con testo centrato */
 body {
     display: flex;
     flex-direction: column;
     text-align: center;
     background-color: #e1c699;
+    font-family: "Hind Siliguri", sans-serif;
 }
 
 /* Navbar sticky con sfondo opaco */
@@ -29,8 +32,9 @@ body {
 }
 
 .header a:hover {
-    background-color: #bcc3b5;
+    background-color: #c4b193;
     color: black;
+    cursor: pointer;
 }
 
 .header a.active {
@@ -48,11 +52,13 @@ body {
 
 #header_title {
     font-size: xx-large;
+    font-family: serif;
 }
 
 /* Titolo cartolina */
 h3 {
     font-size: x-large;
+    font-family: "Crimson Text", serif;
 }
 
 /* Bottoni fronte-retro */
@@ -66,6 +72,7 @@ h3 {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 /* Div immagine cartolina */
@@ -75,7 +82,7 @@ h3 {
 
 /* Div descrizione cartolina */
 .info_c {
-    border: 1.5px solid black;
+    border-left: 1.5px solid black;
     width: 47%;
     display: flex;
     align-items: center;
@@ -85,7 +92,7 @@ h3 {
     font-size: large;
 }
 
-.f_desc, .r_desc{
+.f_desc, .r_desc {
     display: flex;
     margin: 3% 3% 3% 5%;
     flex-direction: column;
@@ -93,11 +100,20 @@ h3 {
     text-align: left;
 }
 
-canvas{
-    display:none;
+.stamp {
+    color: #800000;
 }
 
-.c_holder, img, .info_r_f{
+.stamp:hover {
+    cursor: pointer;
+    color: black;
+}
+
+canvas {
+    display: none;
+}
+
+.c_holder, img, .info_r_f {
     display: none;
     width: 100%;
 }
@@ -111,7 +127,7 @@ canvas{
     font-weight: bold;
 }
 
-.underline{
+.underline {
     text-decoration: underline;
 }
 

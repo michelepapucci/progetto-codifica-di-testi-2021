@@ -28,11 +28,18 @@
                     <a class="c_toggler" id="102">Cartolina 102</a>
                 </div>
                 <div id="header_info">
-                    <a id="header_title">Progetto per l'esame di Codifica di Testi 2020/2021: Tre cartoline della Grande Guerra.<br/></a><br/>
+                    <a id="header_title">Codifica di testi: Tre cartoline della Grande Guerra.<br/></a><br/>
                     <a class="bold">Provenienza cartoline: </a> <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:bibl"/>
                     conservate al <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:repository"/>,
                     <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:settlement"/>,
-                    <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:country"/>
+                    <xsl:value-of select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:country"/><br/>
+                    <a class="bold">Guida alla lettura delle cartoline:</a><br/>
+                    <a>- il simbolo […] è stato inserito tutte le volte in cui, a causa di una grafia poco leggibile, 
+                    non è stato possibile decifrare una parola (o una parte di essa)<br/>
+                    - le parole tra [parentesi quadre] corrispondono alla traduzione estesa, o in italiano standard, 
+                    della corrispondente parola sulla cartolina
+                    - passando con il cursore sopra le parti colorate di testo è possibile vedere, evidenziata da un 
+                    cerchio rosso, la corrispondente area della cartolina</a>
                 </div>
                 <div class="c_holder visible" id="c012">
                     <xsl:apply-templates select="/tei:teiCorpus/tei:TEI[1]"/>
@@ -192,7 +199,7 @@
         <xsl:if test="count(tei:p/tei:stamp)>0">
             <div class="stamp_div">
                 <br/>
-                <a class="bold">Timbri e Note:</a>
+                <a class="bold">Timbri e Francobolli:</a>
                 <br/>
                 <xsl:apply-templates select="tei:p/tei:stamp"/>
             </div>
@@ -220,7 +227,7 @@
             </xsl:if>
             <xsl:if test="count(tei:note)>0">
                 <br/>
-                <a>Note:</a><xsl:value-of select="$space" disable-output-escaping="yes"/>
+                <a>Nota:</a><xsl:value-of select="$space" disable-output-escaping="yes"/>
                 <xsl:apply-templates select="tei:note"/>
             </xsl:if>
             <xsl:variable name="temp_area_id" select="@facs"/>
