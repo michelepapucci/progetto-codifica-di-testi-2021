@@ -28,7 +28,7 @@
                     <a class="c_toggler" id="102">Cartolina 102</a>
                 </div>
                 <div id="header_info">
-                    <a id="header_title">Codifica di testi: Tre cartoline della Grande Guerra.
+                    <a id="header_title">Codifica di testi: Tre cartoline della Grande Guerra
                         <br/>
                     </a>
                     <br/>
@@ -63,7 +63,9 @@
                 </div>
                 <div class="footer">
                     <a class="footer_title">Progetto per l'esame di Codifica di Testi a.a. 2020/2021</a>
-                    <xsl:apply-templates select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc"/>
+                    <div class="footer_text">
+                        <xsl:apply-templates select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc"/>
+                    </div>
                 </div>
             </body>
         </html>

@@ -121,9 +121,14 @@ canvas {
 /* Footer */
 .footer {
     display: flex;
+    flex-direction: column;
     padding-top: 2%;
     margin-top: 1.5%;
     border-top: 1.5px solid black;
+}
+
+.footer_text {
+    flex-direction: row;
 }
 
 .edizione {
