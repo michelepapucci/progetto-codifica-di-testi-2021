@@ -263,7 +263,7 @@
                 </div>
                 <div facs="#c012r" type="retro">
                     <fw type="no.cartolina" place="top-right" facs="#c012r_no.">12</fw>
-                    <div facs="c012r_messaggio" type="message">
+                    <div facs="#c012r_messaggio" type="message">
                         <opener>
                             <dateline>
                                 <placeName ref="#PRG">Purgessimo</placeName>
@@ -497,7 +497,7 @@
                 </div>
                 <div facs="#c044r" type="retro">
                     <fw type="no.cartolina" place="top-right" facs="#c044r_no.">44</fw>
-                    <div facs="c044r_messaggio" type="message">
+                    <div facs="#c044r_messaggio" type="message">
                         <opener>
                             <dateline>
                                 <placeName ref="#VI">(Vicenza)</placeName>
@@ -708,7 +708,7 @@
                 </div>
                 <div facs="#c102r" type="retro">
                     <fw type="no.cartolina" place="top-left" facs="#c102r_no.">102</fw>
-                    <div facs="c102r_messaggio" type="message">
+                    <div facs="#c102r_messaggio" type="message">
                         <opener>
                             <salute>Ti ricordo sempre con 
                                 <hi rend="underline">

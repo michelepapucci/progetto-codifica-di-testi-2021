@@ -8,6 +8,7 @@ $(function() {
         $("#c" + this.id).addClass("visible");
         $(".c_toggler").removeClass("active");
         $(this).addClass("active");
+        console.log("#r_c" + this.id + "_f");
         $("#r_c" + this.id + "_f").prop("checked", true).change();
     });
 
@@ -78,7 +79,6 @@ $(function() {
     });
 
     $('.stamp').on('mouseover', function() {
-        console.log('event: mouseover');
         let this_id = ($(this).attr('id').split('_'))
         this_id = this_id[0];
         let j_canvas = $('#can_' + this_id);

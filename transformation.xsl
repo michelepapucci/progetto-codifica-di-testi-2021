@@ -62,6 +62,7 @@
                     <xsl:apply-templates select="/tei:teiCorpus/tei:TEI[3]"/>
                 </div>
                 <div class="footer">
+                    <a class="footer_title">Progetto per l'esame di Codifica di Testi a.a. 2020/2021</a>
                     <xsl:apply-templates select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc"/>
                 </div>
             </body>
@@ -125,13 +126,13 @@
     </xsl:template>
 
     <xsl:template match="tei:publicationStmt">
-        <a class="bold">Editore:</a>
+        <a class="bold">Editore: </a>
         <xsl:value-of select="tei:publisher"/>
         <br/>
-        <a class="bold">Distribuito da:</a>
+        <a class="bold">Distribuito da: </a>
         <xsl:value-of select="tei:distributor"/>
         <br/>
-        <a class="bold">Disponibilità:</a>
+        <a class="bold">Disponibilità: </a>
         <xsl:value-of select="tei:availability/tei:p"/>
         <br/>
     </xsl:template>
@@ -141,27 +142,21 @@
         <div class="radio_holder">
             <input type="radio">
                 <xsl:attribute name="type">radio</xsl:attribute>
-                <xsl:attribute name="id">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_f
-                </xsl:attribute>
-                <xsl:attribute name="name"><xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_fronte_retro
-                </xsl:attribute>
+                <xsl:attribute name="id">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_f</xsl:attribute>
+                <xsl:attribute name="name"><xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_fronte_retro</xsl:attribute>
                 <xsl:attribute name="checked">checked</xsl:attribute>
             </input>
             <xsl:element name="label">
-                <xsl:attribute name="for">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_f
-                </xsl:attribute>
+                <xsl:attribute name="for">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_f</xsl:attribute>
                 Fronte
             </xsl:element>
             <input type="radio">
                 <xsl:attribute name="type">radio</xsl:attribute>
-                <xsl:attribute name="id">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_r
-                </xsl:attribute>
-                <xsl:attribute name="name"><xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_fronte_retro
-                </xsl:attribute>
+                <xsl:attribute name="id">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_r</xsl:attribute>
+                <xsl:attribute name="name"><xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_fronte_retro</xsl:attribute>
             </input>
             <xsl:element name="label">
-                <xsl:attribute name="for">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_r
-                </xsl:attribute>
+                <xsl:attribute name="for">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_r</xsl:attribute>
                 Retro
             </xsl:element>
         </div>
@@ -176,7 +171,7 @@
     <xsl:template match="tei:teiHeader">
         <div class="header_c">
             <h3>
-                <a class="bold">Titolo:</a>
+                <a class="bold">Titolo: </a>
                 <xsl:value-of select="tei:fileDesc/tei:sourceDesc/tei:bibl/tei:title"/>
             </h3>
             <xsl:if test="count(tei:fileDesc/tei:sourceDesc/tei:bibl/tei:publisher)>0">
@@ -255,47 +250,69 @@
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[2]/tei:div[@type='message']">
-        <xsl:apply-templates select="tei:opener/tei:dateline"/>
-        <xsl:variable name="temp_id" select="@facs"/>
+        <xsl:variable name="temp_id" select="current()/@facs"/>
         <xsl:variable name="final_id" select="substring-after($temp_id, '#')"/>
-        <xsl:choose>
-            <xsl:when test="count(tei:closer/tei:dateline)>0">
-                <div class="text_div">
-                    <xsl:attribute name="id">
-                        <xsl:value-of select="$final_id"/>
-                    </xsl:attribute>
-                    <a class="bold">Testo:</a>
-                    <xsl:apply-templates select="tei:opener/tei:salute"/>
-                    <xsl:apply-templates select="tei:closer/tei:signed"/>
-                </div>
-                <br/>
-                <xsl:apply-templates select="tei:closer/tei:dateline"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <div class="text_div">
-                    <xsl:attribute name="id">
-                        <xsl:value-of select="$final_id"/>
-                    </xsl:attribute>
-                    <a class="bold">Testo:</a>
-                    <xsl:apply-templates select="tei:opener/tei:salute"/>
-                    <xsl:apply-templates select="tei:closer"/>
+        <div class="stamp">
+            <xsl:attribute name="id">
+                <xsl:value-of select="$final_id"/>
+            </xsl:attribute>
+            <span>
+                <xsl:choose>
+                    <xsl:when test="count(//tei:zone[@xml:id = $final_id]/@ulx)>0">
+                        <xsl:attribute name="data-ulx">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@ulx"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="data-uly">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@uly"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="data-lrx">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@lrx"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="data-lry">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@lry"/>
+                        </xsl:attribute>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:attribute name="data-points">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@points"/>
+                        </xsl:attribute>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </span>
+            <xsl:apply-templates select="tei:opener/tei:dateline"/>
+            <xsl:choose>
+                <xsl:when test="count(tei:closer/tei:dateline)>0">
+                    <div class="text_div">
+                        <a class="bold">Testo: </a>
+                        <xsl:apply-templates select="tei:opener/tei:salute"/>
+                        <xsl:apply-templates select="tei:closer/tei:signed"/>
+                    </div>
                     <br/>
-                </div>
-            </xsl:otherwise>
-        </xsl:choose>
+                    <xsl:apply-templates select="tei:closer/tei:dateline"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <div class="text_div">
+                        <a class="bold">Testo: </a>
+                        <xsl:apply-templates select="tei:opener/tei:salute"/>
+                        <xsl:apply-templates select="tei:closer"/>
+                        <br/>
+                    </div>
+                </xsl:otherwise>
+            </xsl:choose>
+        </div>
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[2]/tei:div[@type='destination']">
         <div class="destination_div">
 
-            <a class="bold">Indirizzo:</a>
+            <a class="bold">Indirizzo: </a>
             <br/>
             <xsl:apply-templates select="tei:p[last()]/tei:address/tei:addrLine"/>
         </div>
         <xsl:if test="count(tei:p/tei:stamp)>0">
             <div class="stamp_div">
                 <br/>
-                <a class="bold">Timbri e Francobolli:</a>
+                <a class="bold">Timbri e Francobolli: </a>
                 <br/>
                 <xsl:apply-templates select="tei:p/tei:stamp"/>
             </div>
@@ -303,7 +320,7 @@
 
         <xsl:if test="count(following-sibling::tei:fw)>0">
             <div class="note_segni_div">
-                <a class="bold">Note e altre segni:</a>
+                <a class="bold">Note e altre segni: </a>
                 <br/>
                 <xsl:apply-templates select="following-sibling::tei:fw"/>
             </div>
@@ -485,7 +502,7 @@
 
     <xsl:template match="tei:dateline">
         <div class="dateline_div">
-            <a class="bold">Data e luogo:</a>
+            <a class="bold">Data e luogo: </a>
             <xsl:apply-templates select="tei:placeName"/>
             <xsl:apply-templates select="tei:date"/>
         </div>
