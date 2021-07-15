@@ -289,9 +289,7 @@
                             <stamp type="postmark" facs="#c012r_timbro"> 
                                     <damage>Posta  
                                         <unclear reason="faded">Militare
-                                            <date>1
-                                                <gap reason="faded"/>
-                                            </date>
+                                            <date>1 <gap reason="faded"/></date>
                                         </unclear>
                                     </damage>
                                 <date>

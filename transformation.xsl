@@ -50,9 +50,61 @@
                 <div class="c_holder" id="c102">
                     <xsl:apply-templates select="/tei:teiCorpus/tei:TEI[3]"/>
                 </div>
-
+                <div class="footer">
+                    <xsl:apply-templates select="/tei:teiCorpus/tei:teiHeader/tei:fileDesc"/>
+                </div>
             </body>
         </html>
+    </xsl:template>
+
+    <xsl:template match="tei:teiHeader/tei:fileDesc">
+        <div class = "edizione">
+            <xsl:apply-templates select="tei:editionStmt/tei:respStmt"/>
+        </div>
+        <div class = "pubblicazione">
+            <xsl:apply-templates select="tei:publicationStmt"/>
+        </div>
+    </xsl:template>
+
+    <xsl:template match="tei:editionStmt/tei:respStmt">
+        <a class="bold"><xsl:value-of select="tei:resp"/></a><xsl:value-of select="$space" disable-output-escaping="yes"/>
+        <xsl:for-each select="tei:name">
+            <xsl:choose>
+                <xsl:when test = "position() != last()">
+                    <xsl:choose>
+                        <xsl:when test="not(normalize-space(text()))">
+                            <xsl:variable name="temp_id"><xsl:value-of select="@ref"/></xsl:variable>
+                            <xsl:variable name="final_id"><xsl:value-of select="substring-after($temp_id, '#')"/></xsl:variable>
+                            <xsl:value-of select="//tei:name[@xml:id=$final_id]"/>,<xsl:value-of select="$space" disable-output-escaping="yes"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="text()"/>,<xsl:value-of select="$space" disable-output-escaping="yes"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:choose>
+                        <xsl:when test="not(normalize-space(text()))">
+                            <xsl:variable name="temp_id"><xsl:value-of select="@ref"/></xsl:variable>
+                            <xsl:variable name="final_id"><xsl:value-of select="substring-after($temp_id, '#')"/></xsl:variable>
+                            <xsl:value-of select="//tei:name[@xml:id=$final_id]"/><br/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="text()"/><br/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:for-each>
+    </xsl:template>
+
+    <xsl:template match="tei:publicationStmt">
+        <a class="bold">Editore: </a>
+        <xsl:value-of select="tei:publisher"/><br/>
+        <a class="bold">Distribuito da: </a>
+        <xsl:value-of select="tei:distributor"/><br/>
+        <a class="bold">Disponibilità: </a>
+        <xsl:value-of select="tei:availability/tei:p"/><br/>
     </xsl:template>
 
     <xsl:template match="/tei:teiCorpus/tei:TEI">
@@ -60,27 +112,21 @@
         <div class="radio_holder">
             <input type="radio">
                 <xsl:attribute name="type">radio</xsl:attribute>
-                <xsl:attribute name="id">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_f
-                </xsl:attribute>
-                <xsl:attribute name="name"><xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_fronte_retro
-                </xsl:attribute>
+                <xsl:attribute name="id">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_f</xsl:attribute>
+                <xsl:attribute name="name"><xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_fronte_retro</xsl:attribute>
                 <xsl:attribute name="checked">checked</xsl:attribute>
             </input>
             <xsl:element name="label">
-                <xsl:attribute name="for">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_f
-                </xsl:attribute>
+                <xsl:attribute name="for">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_f</xsl:attribute>
                 Fronte
             </xsl:element>
             <input type="radio">
                 <xsl:attribute name="type">radio</xsl:attribute>
-                <xsl:attribute name="id">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_r
-                </xsl:attribute>
-                <xsl:attribute name="name"><xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_fronte_retro
-                </xsl:attribute>
+                <xsl:attribute name="id">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_r</xsl:attribute>
+                <xsl:attribute name="name"><xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_fronte_retro</xsl:attribute>
             </input>
             <xsl:element name="label">
-                <xsl:attribute name="for">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_r
-                </xsl:attribute>
+                <xsl:attribute name="for">r_<xsl:value-of select="tei:facsimile/@xml:id"></xsl:value-of>_r</xsl:attribute>
                 Retro
             </xsl:element>
         </div>
@@ -251,7 +297,7 @@
 
     <xsl:template match ="tei:damage">
         <xsl:value-of select="text()"/>
-        <xsl:apply-templates select="tei:unclear"/>
+        <xsl:value-of select="tei:unclear"/>
     </xsl:template>
 
     <xsl:template match="tei:address/tei:addrLine">
@@ -369,9 +415,6 @@
 
     <xsl:template match="tei:unclear/child::node()">
         <xsl:choose>
-            <xsl:when test="name() = 'date'">
-                <xsl:apply-templates select="tei:date"/>
-            </xsl:when>
             <xsl:when test="name() = 'seg'">
                 <xsl:value-of select="text()"/>
             </xsl:when>
@@ -423,6 +466,7 @@
     <xsl:template match="tei:date">
         <xsl:value-of select="text()"/>
         <xsl:apply-templates select="tei:gap"/>
+        <xsl:apply-templates select="tei:date"/>
         <xsl:value-of select="following-sibling::text()"/>
     </xsl:template>
 
