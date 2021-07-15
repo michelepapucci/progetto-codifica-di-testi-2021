@@ -47,8 +47,8 @@
                         - il simbolo […] è stato inserito tutte le volte in cui, a causa di una grafia poco leggibile,
                         non è stato possibile decifrare una parola (o una parte di essa)
                         <br/>
-                        - le parole tra [parentesi quadre] corrispondono alla traduzione estesa, o in italiano standard,
-                        della corrispondente parola sulla cartolina
+                        - le parole tra [parentesi quadre] corrispondono alla traduzione estesa della corrispondente 
+                        parola sulla cartolina
                         <br/>
                         - passando con il cursore sopra le parti di testo colorate è possibile vedere, evidenziate da un
                         poligono verde, le corrispondenti aree della cartolina
