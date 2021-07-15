@@ -492,7 +492,7 @@
                     <figure>
                         <graphic url='images/7694-044F.jpg'/>
                         <figDesc>Una crocerossina con un neo sopra il labbro superiore guarda risoluta verso l'alto.</figDesc>
-                        <head>[Crocerossina] di <persName ref="#FV" facs="c044f_firma">F. Vecchi</persName></head>
+                        <head>[Crocerossina] di <persName ref="#FV" facs="#c044f_firma">F. Vecchi</persName></head>
                     </figure>
                 </div>
                 <div facs="#c044r" type="retro">
@@ -685,7 +685,7 @@
             </surface>
             <surface xml:id="c102r">
                 <graphic url='images/7694-102R.jpg' width='1616px' height='1028px' />
-                <zone ulx="28" uly="159" lrx="771" lry="1006" xml:id="c102r_messaggio"/>
+                <zone ulx="39" uly="159" lrx="774" lry="1003" xml:id="c102r_messaggio"/>
                 <zone points = ' 783,80 913,134 950,239 908,346 780,388 660,344 621,236 664,130 ' xml:id="c102r_timbro"/>
                 <zone ulx="1204" uly="33" lrx="1467" lry="334" xml:id="c102r_francobollo"/>
                 <zone ulx="229" uly="106" lrx="411" lry="184" xml:id="c102r_no."/>

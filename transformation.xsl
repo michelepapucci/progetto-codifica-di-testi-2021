@@ -226,13 +226,41 @@
                     <br/>
                     <br/>
                     <xsl:if test="count(tei:body/tei:div[1]/tei:figure/tei:head/tei:persName)>0">
-                        <a class="bold">Autore:</a>
-                        <xsl:value-of select="tei:body/tei:div[1]/tei:figure/tei:head/tei:persName"/>
+                        <xsl:variable name="temp_id" select="tei:body/tei:div[1]/tei:figure/tei:head/tei:persName/@facs"/>
+                        <xsl:variable name="final_id" select="substring-after($temp_id, '#')"/>
+                        <div class="stamp">
+                            <xsl:attribute name="id">
+                                <xsl:value-of select="$final_id"/>
+                            </xsl:attribute>
+                            <span>
+                                <xsl:choose>
+                                    <xsl:when test="count(//tei:zone[@xml:id = $final_id]/@ulx)>0">
+                                        <xsl:attribute name="data-ulx">
+                                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@ulx"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="data-uly">
+                                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@uly"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="data-lrx">
+                                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@lrx"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="data-lry">
+                                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@lry"/>
+                                        </xsl:attribute>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:attribute name="data-points">
+                                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@points"/>
+                                        </xsl:attribute>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </span>
+                            <a class="bold">Autore: </a>
+                            <xsl:value-of select="tei:body/tei:div[1]/tei:figure/tei:head/tei:persName"/>
+                        </div>
                     </xsl:if>
                     <xsl:if test="(count(tei:body/tei:div[1]/tei:figure/tei:note)>0) or (count(tei:body/tei:div[1]/tei:figure/tei:fw)>0)">
                         <div class="f_desc_note">
-                            <a class="titolo_note bold">Note:</a>
-                            <br/>
                             <xsl:apply-templates select="tei:body/tei:div[1]/tei:figure/tei:note"/>
                             <xsl:apply-templates select="tei:body/tei:div[1]/tei:figure/tei:fw"/>
                         </div>
@@ -592,27 +620,88 @@
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:note">
-        <xsl:value-of select="text()"/>
-        <br/>
+        <xsl:variable name="temp_id" select="current()/@facs"/>
+        <xsl:variable name="final_id" select="substring-after($temp_id, '#')"/>
+        <div class="stamp">
+            <xsl:attribute name="id">
+                <xsl:value-of select="$final_id"/>
+            </xsl:attribute>
+            <span>
+                <xsl:choose>
+                    <xsl:when test="count(//tei:zone[@xml:id = $final_id]/@ulx)>0">
+                        <xsl:attribute name="data-ulx">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@ulx"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="data-uly">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@uly"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="data-lrx">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@lrx"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="data-lry">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@lry"/>
+                        </xsl:attribute>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:attribute name="data-points">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@points"/>
+                        </xsl:attribute>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </span>
+            <a class="titolo_note bold">Note: </a><br/>
+            <xsl:value-of select="text()"/>
+            <br/><br/>
+        </div>
     </xsl:template>
 
     <xsl:template match="tei:body/tei:div[1]/tei:figure/tei:fw">
-        <xsl:if test="@type='logoCartolina'">
-            <a class="bold">Logo:</a>
-            <br/>
-        </xsl:if>
-        <xsl:if test="@type='idno.cartolina'">
-            <a class="bold">Identificatore cartolina:</a>
-            <br/>
-        </xsl:if>
-        <xsl:variable name="temp_id_fw_fronte" select="@facs"/>
-        <xsl:variable name="final_id_fw_fronte" select="substring-after($temp_id_fw_fronte, '#')"/>
-        <a>
+        <xsl:variable name="temp_id" select="current()/@facs"/>
+        <xsl:variable name="final_id" select="substring-after($temp_id, '#')"/>
+        <div class="stamp">
             <xsl:attribute name="id">
-                <xsl:value-of select="$final_id_fw_fronte"/>
+                <xsl:value-of select="$final_id"/>
             </xsl:attribute>
-            <xsl:value-of select="text()"/>
-        </a>
+            <span>
+                <xsl:choose>
+                    <xsl:when test="count(//tei:zone[@xml:id = $final_id]/@ulx)>0">
+                        <xsl:attribute name="data-ulx">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@ulx"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="data-uly">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@uly"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="data-lrx">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@lrx"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="data-lry">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@lry"/>
+                        </xsl:attribute>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:attribute name="data-points">
+                            <xsl:value-of select="//tei:zone[@xml:id = $final_id]/@points"/>
+                        </xsl:attribute>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </span>
+            <xsl:if test="@type='logoCartolina'">
+                <a class="bold">Logo: </a>
+                <br/>
+            </xsl:if>
+            <xsl:if test="@type='idno.cartolina'">
+                <a class="bold">Identificatore cartolina: </a>
+                <br/>
+            </xsl:if>
+            <xsl:variable name="temp_id_fw_fronte" select="@facs"/>
+            <xsl:variable name="final_id_fw_fronte" select="substring-after($temp_id_fw_fronte, '#')"/>
+            <a>
+                <xsl:attribute name="id">
+                    <xsl:value-of select="$final_id_fw_fronte"/>
+                </xsl:attribute>
+                <xsl:value-of select="text()"/>
+            </a>
+        </div>
         <br/>
     </xsl:template>
 
