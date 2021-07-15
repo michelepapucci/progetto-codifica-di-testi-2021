@@ -78,10 +78,11 @@ $(function() {
     });
 
     $('.stamp').on('mouseover', function() {
-        console.log('event: mouseover');
+
         let this_id = ($(this).attr('id').split('_'))
         this_id = this_id[0];
         let j_canvas = $('#can_' + this_id);
+        console.log('#can_' + this_id);
         ctx = j_canvas[0].getContext('2d');
         let img_id = '#' + this_id
         let conversionRatio = j_canvas[0].height / $(img_id)[0].naturalHeight;
