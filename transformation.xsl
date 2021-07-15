@@ -245,6 +245,9 @@
                 <xsl:attribute name="id">i_<xsl:value-of select="$final_id_info_retro"/>
                 </xsl:attribute>
                 <div class="r_desc">
+                    <div>
+                        <xsl:apply-templates select="tei:body/tei:div[2]/tei:fw[1]"/>
+                    </div>
                     <xsl:apply-templates select="tei:body/tei:div[2]/tei:div"/>
                 </div>
             </div>
@@ -322,7 +325,7 @@
 
         <xsl:if test="count(following-sibling::tei:fw)>0">
             <div class="note_segni_div">
-                <a class="bold">Note e altre segni: </a>
+                <a class="bold">Note e altri segni: </a>
                 <br/>
                 <xsl:apply-templates select="following-sibling::tei:fw"/>
             </div>
@@ -332,11 +335,13 @@
     <xsl:template match="tei:fw">
         <xsl:variable name="temp_id_stamp" select="@facs"/>
         <xsl:variable name="final_id_stamp" select="substring-after($temp_id_stamp, '#')"/>
-        <a class="stamp">
+        <div class="stamp">
             <xsl:attribute name="id">
                 <xsl:value-of select="$final_id_stamp"/>
             </xsl:attribute>
-            -
+            <xsl:if test="@type='no.cartolina'">
+                <a class="bold">Numero cartolina: </a>
+            </xsl:if>
             <xsl:value-of select="text()"/>
             <xsl:value-of select="tei:placeName"/>
             <br/>
@@ -363,7 +368,7 @@
                     </xsl:otherwise>
                 </xsl:choose>
             </span>
-        </a>
+        </div>
     </xsl:template>
 
     <xsl:template match="tei:p/tei:stamp">

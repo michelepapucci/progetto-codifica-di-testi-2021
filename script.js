@@ -35,12 +35,14 @@ $(function() {
     function drawRect(ctx, ulx, uly, lrx, lry, ratio) {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         ctx.strokeStyle = "#00FF00";
+        ctx.lineWidth = 3;
         ctx.strokeRect(ulx * ratio, uly * ratio, Math.abs(ulx - lrx) * ratio, Math.abs(uly - lry) * ratio);
     }
 
     function drawPoly(ctx, point_list, ratio) {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         ctx.strokeStyle = "#00FF00";
+        ctx.lineWidth = 3;
         ctx.beginPath();
         let first = true;
         for(let point of point_list) {
