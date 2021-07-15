@@ -118,6 +118,22 @@ canvas {
     width: 100%;
 }
 
+/* Footer */
+.footer {
+    display: flex;
+    padding-top: 2%;
+    margin-top: 1.5%;
+    border-top: 1.5px solid black;
+}
+
+.edizione {
+    width: 50%;
+}
+
+.pubblicazione {
+    width: 50%;
+}
+
 /* Proprietà generali */
 .visible {
     display: initial;
